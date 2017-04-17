@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+
+  <title>
+
+    
+      Laravel Echo 概述篇
+    
+
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Laravel Echo &amp;#x662F; 5.3 &amp;#x7248;&amp;#x63A8;&amp;#x51FA;&amp;#x4F86;&amp;#x7684;&amp;#x65B0;&amp;#x529F;&amp;#x80FD;&amp;#x3002;&amp;#x5EE3;&amp;#x64AD;&amp;#x5FC5;&amp;#x9700;&amp;#x900F;&amp;#x904E; &amp;#x4F47;&amp;#x5217;(queue) &amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#xFF">
+<meta name="keywords" content="php,laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel Echo 概述篇">
+<meta property="og:url" content="http://blog.liaosankai.com/2016/09/06/Laravel Echo 概述篇/index.html">
+<meta property="og:site_name" content="SanKai's Blog">
+<meta property="og:description" content="Laravel Echo &amp;#x662F; 5.3 &amp;#x7248;&amp;#x63A8;&amp;#x51FA;&amp;#x4F86;&amp;#x7684;&amp;#x65B0;&amp;#x529F;&amp;#x80FD;&amp;#x3002;&amp;#x5EE3;&amp;#x64AD;&amp;#x5FC5;&amp;#x9700;&amp;#x900F;&amp;#x904E; &amp;#x4F47;&amp;#x5217;(queue) &amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#xFF">
+<meta property="og:image" content="http://blog.liaosankai.com/2016/09/06/Laravel%20Echo%20概述篇/pusher-events.png">
+<meta property="og:updated_time" content="2017-04-17T03:31:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel Echo 概述篇">
+<meta name="twitter:description" content="Laravel Echo &amp;#x662F; 5.3 &amp;#x7248;&amp;#x63A8;&amp;#x51FA;&amp;#x4F86;&amp;#x7684;&amp;#x65B0;&amp;#x529F;&amp;#x80FD;&amp;#x3002;&amp;#x5EE3;&amp;#x64AD;&amp;#x5FC5;&amp;#x9700;&amp;#x900F;&amp;#x904E; &amp;#x4F47;&amp;#x5217;(queue) &amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#xFF">
+<meta name="twitter:image" content="http://blog.liaosankai.com/2016/09/06/Laravel%20Echo%20概述篇/pusher-events.png">
+
+  
+
+  
+
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+</head>
+
+
+  <body>
+
+    <div id="container">
+
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      
+      
+        <a id="logo" class="logo" href="/"></a>
+      
+      
+      <nav id="main-nav">
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.liaosankai.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+      <section id="main" class="outer">
+        
+  <article id="post-Laravel Echo 概述篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel Echo 概述篇
+    </h1>
+  
+
+
+      </header>
+    
+
+    <div class="article-meta">
+      <a href="/2016/09/06/Laravel Echo 概述篇/" class="article-date %>">
+  <time datetime="2016-09-05T16:00:00.000Z" itemprop="datePublished">
+    2016-09-06
+  </time>
+</a>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/程式/">程式</a>
+  </div>
+
+
+
+      
+        <div class="article-comment-link-wrap">
+          <a href="http://blog.liaosankai.com/2016/09/06/Laravel Echo 概述篇/#disqus_thread" class="article-comment-link">
+            評論
+          </a>
+        </div>
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Laravel Echo &#x662F; 5.3 &#x7248;&#x63A8;&#x51FA;&#x4F86;&#x7684;&#x65B0;&#x529F;&#x80FD;&#x3002;&#x5EE3;&#x64AD;&#x5FC5;&#x9700;&#x900F;&#x904E; <a href="https://laravel.tw/docs/5.3/queues" target="_blank" rel="external">&#x4F47;&#x5217;(queue)</a> &#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x5728; Window &#x7CFB;&#x7D71;&#x5C31;&#x76F4;&#x63A5; GG &#x4E86;&#x3002;&#x9019;&#x908A;&#x6211;&#x6539;&#x7528; Cloud9 &#x958B;&#x51FA; liunx PHP &#x74B0;&#x5883;&#x4F86;&#x5BE6;&#x9A57;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x6709; cloud9 &#x7684;&#x5E33;&#x865F;&#xFF0C;&#x53EF;&#x4EE5;&#x5F9E;&#x9019;&#x908A; <a href="https://ide.c9.io/liaosankai/laravel-echo-example" target="_blank" rel="external">&#x76F4;&#x63A5; clone &#x4E00;&#x4EFD;</a> &#x81EA;&#x884C;&#x7814;&#x7A76;&#x3002;Cloud9 &#x7684;&#x4F7F;&#x7528;&#x53EF;&#x4EE5;&#x53C3;&#x8003;&#x5148;&#x524D;&#x6587;&#x7AE0; <a href="/2016/09/05/Cloud9%20with%20Laravel%205.3">Cloud9 with Laravel 5.3</a>&#xFF0C;&#x9019;&#x6B21;&#x5BE6;&#x9A57;&#x53C3;&#x8003;&#x4E86; <a href="https://mattstauffer.co/blog/introducing-laravel-echo" target="_blank" rel="external">Introducing Laravel Echo: An In-Depth Walk-Through</a> &#x6587;&#x7AE0;&#x4F86;&#x8DDF;&#x8457;&#x4F5C;&#xFF0C;&#x4E26;&#x8A18;&#x9304;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x4E0A;&#x7B46;&#x8A18;&#x3002;</p>
+<a id="more"></a>
+<h3 id="&#x9A45;&#x52D5;"><a href="#&#x9A45;&#x52D5;" class="headerlink" title="&#x9A45;&#x52D5;"></a>&#x9A45;&#x52D5;</h3><p>Laravel Echo &#x76EE;&#x524D;&#x652F;&#x63F4; <code>pusher</code>, <code>redis</code>, <code>log</code>, <code>null</code> &#x9A45;&#x52D5;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5F9E; <code>config/broadcasting.php</code> &#x53BB;&#x8A2D;&#x5B9A;&#xFF0C;&#x4F46;&#x4E0D;&#x5EFA;&#x8B70;&#x9019;&#x6A23;&#x505A;&#xFF0C;&#x6539;&#x7531;&#x5B9A;&#x7FA9; <code>.env</code> &#x4E2D;&#x7684; <code>BROADCAST_DRIVER</code> &#x7B49;&#x76F8;&#x95DC;&#x7684;&#x74B0;&#x5883;&#x8B8A;&#x6578;&#x662F;&#x6703;&#x6BD4;&#x8F03;&#x597D;&#x7684;&#x4F5C;&#x6CD5;&#x3002;</p>
+<blockquote>
+<p>Laravel &#x5927;&#x90E8;&#x5206;&#x8A2D;&#x5B9A;&#x6A94;&#xFF0C;&#x90FD;&#x61C9;&#x8A72;&#x5148;&#x5F9E; .env &#x74B0;&#x5883;&#x8B8A;&#x6578;&#x53BB;&#x8A2D;&#x5B9A;</p>
+</blockquote>
+<p>&#x9019;&#x6B21;&#x4F7F;&#x7528; pusher &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F46;&#x4E0B;&#x9762;&#x9084;&#x662F;&#x6703;&#x8AAA;&#x660E;&#x4E00;&#x4E0B;&#x5404;&#x9A45;&#x52D5;&#x5DEE;&#x7570;&#xFF1A;</p>
+<h5 id="pusher-&#x6A21;&#x5F0F;"><a href="#pusher-&#x6A21;&#x5F0F;" class="headerlink" title="- pusher &#x6A21;&#x5F0F;"></a>- pusher &#x6A21;&#x5F0F;</h5><p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F; pusher &#x6A21;&#x5F0F;&#xFF0C;Laravel &#x6703;&#x5C07;&#x4E8B;&#x4EF6;&#x5305;&#x5167;&#x5BB9;&#x5148;&#x767C;&#x9001;&#x7B2C;&#x4E09;&#x65B9;&#x63A8;&#x64AD;&#x670D;&#x52D9;&#x5E73;&#x53F0; <a href="https://pusher.com" target="_blank" rel="external">pusher.com </a> &#x4E0A;&#xFF0C;&#x900F;&#x904E; pusher &#x5F8C;&#x53F0;&#x7684; Debug Console &#x53EF;&#x4EE5;&#x770B;&#x898B;&#x4E0B;&#x5716;&#xFF1A;</p>
+<p><img src="/2016/09/06/Laravel Echo &#x6982;&#x8FF0;&#x7BC7;/pusher-events.png" alt="&#x5716;&#x7247;&#x70BA;&#x540C;&#x4E00;&#x500B;&#x4E8B;&#x4EF6;&#x5305;&#x767C;&#x9001;&#x81F3;&#x56DB;&#x500B;&#x4E0D;&#x540C;&#x7684;&#x983B;&#x9053;"></p>
+<p>&#x800C;&#x5BA2;&#x7AEF;&#x7A0B;&#x5F0F;&#x5247;&#x900F;&#x904E; laravel-echo &#x8A2D;&#x5B9A; pusher app key &#x4F86;&#x9023;&#x7DDA;&#x5E73;&#x53F0;&#xFF0C;&#x53D6;&#x5F97;&#x5E73;&#x53F0;&#x6240;&#x767C;&#x9001;&#x7684;&#x4E8B;&#x4EF6;&#x3002;(&#x5FC5;&#x9700;&#x5148;&#x5728; pusher.com &#x7533;&#x8ACB;&#x4E00;&#x500B;&#x5E33;&#x865F;&#x4E26;&#x5EFA;&#x7ACB;&#x4E00;&#x500B; APP)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Echo = <span class="built_in">require</span>(<span class="string">&apos;laravel-echo&apos;</span>);</div><div class="line"><span class="built_in">window</span>.Echo = <span class="keyword">new</span> Echo({</div><div class="line">    <span class="attr">broadcaster</span>: <span class="string">&apos;pusher&apos;</span>,</div><div class="line">    <span class="attr">key</span>: <span class="string">&apos;244083293b984a086228&apos;</span></div><div class="line">});</div></pre></td></tr></table></figure>
+<h5 id="redis-&#x6A21;&#x5F0F;"><a href="#redis-&#x6A21;&#x5F0F;" class="headerlink" title="- redis &#x6A21;&#x5F0F;"></a>- redis &#x6A21;&#x5F0F;</h5><p>&#x5728;&#x4F7F;&#x7528; redis &#x6A21;&#x5F0F;&#x4E4B;&#x524D;&#xFF0C;&#x5FC5;&#x9700;&#x5148; <a href="http://blog.fens.me/linux-redis-install/" target="_blank" rel="external">&#x5B89;&#x88DD; redis-server &#x4E26;&#x555F;&#x52D5;</a>&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F; cloud9 &#x53C3;&#x8003; <a href="https://community.c9.io/t/setting-up-redis/1719" target="_blank" rel="external">Setting Up Redis</a> &#x3002;Laravel &#x5C07;&#x4E8B;&#x4EF6;&#x5305;&#x5167;&#x5BB9;&#x5BEB;&#x5165;&#x81F3; redis &#x8CC7;&#x6599;&#x5EAB;&#xFF0C;&#x900F;&#x904E; node.js &#x7684; ioredis &#x6355;&#x6349; redis &#x7684; Pub/Sub &#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x5F8C;&#x518D;&#x7528; WebSocket &#x6216; Socket.io &#x518D;&#x8F49;&#x767C;&#x4E00;&#x6B21;&#x4E8B;&#x4EF6;&#x81F3;&#x5BA2;&#x7AEF;&#x3002;</p>
+<p>&#x7BC4;&#x4F8B;&#x7A0B;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// socket.js</span></div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">&apos;socket.io&apos;</span>)(<span class="number">3000</span>);</div><div class="line"><span class="keyword">var</span> Redis = <span class="built_in">require</span>(<span class="string">&apos;ioredis&apos;</span>);</div><div class="line"><span class="keyword">var</span> redis = <span class="keyword">new</span> Redis();</div><div class="line"></div><div class="line">redis.subscribe(<span class="string">&apos;chat-room.9453&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, count</span>) </span>{</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">&apos;redis connect!&apos;</span>);</div><div class="line">});</div><div class="line"></div><div class="line">redis.on(<span class="string">&apos;message&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">channel, msg</span>) </span>{</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&apos;&#x983B;&#x9053;&#x540D;&#x7A31;:&apos;</span>, channel);<span class="comment">// chat-room.9453</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&apos;&#x8CC7;&#x6599;&#x5167;&#x5BB9;&apos;</span>, msg);</div><div class="line">    <span class="comment">//   &#x8CC7;&#x6599;&#x5167;&#x5BB9;</span></div><div class="line">    <span class="comment">//   {</span></div><div class="line">    <span class="comment">//     &quot;event&quot;: &quot;App\\Events\\ChatMessageWasReceived&quot;,</span></div><div class="line">    <span class="comment">//     &quot;data&quot;: {</span></div><div class="line">    <span class="comment">//         &quot;chatMessage&quot;: {</span></div><div class="line">    <span class="comment">//             &quot;id&quot;: 33,</span></div><div class="line">    <span class="comment">//             &quot;message&quot;: &quot;1111&quot;,</span></div><div class="line">    <span class="comment">//             &quot;user_id&quot;: &quot;1&quot;,</span></div><div class="line">    <span class="comment">//             &quot;created_at&quot;: &quot;2016-09-06 07:54:10&quot;,</span></div><div class="line">    <span class="comment">//             &quot;updated_at&quot;: &quot;2016-09-06 07:54:10&quot;</span></div><div class="line">    <span class="comment">//         },</span></div><div class="line">    <span class="comment">//         &quot;user&quot;: {</span></div><div class="line">    <span class="comment">//             &quot;id&quot;: 1,</span></div><div class="line">    <span class="comment">//             &quot;name&quot;: &quot;\u5927\u91e3\u54e5&quot;,</span></div><div class="line">    <span class="comment">//             &quot;email&quot;: &quot;big.hook.brother@gmail.com&quot;,</span></div><div class="line">    <span class="comment">//             &quot;created_at&quot;: &quot;2016-09-02 04:31:32&quot;,</span></div><div class="line">    <span class="comment">//             &quot;updated_at&quot;: &quot;2016-09-02 04:31:32&quot;</span></div><div class="line">    <span class="comment">//         }</span></div><div class="line">    <span class="comment">//     },</span></div><div class="line">    <span class="comment">//     &quot;socket&quot;: null</span></div><div class="line">    <span class="comment">//   }</span></div><div class="line"></div><div class="line">    <span class="comment">// &#x5C07;&#x8A0A;&#x606F;&#x518D;&#x900F;&#x904E; socket.io &#x8F49;&#x767C;&#x4E8B;&#x4EF6;</span></div><div class="line">    io.emit(msg.event, msg.data);</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x4E0D;&#x904E;&#x9019;&#x7A2E;&#x81EA;&#x523B;&#x7684;&#x7C21;&#x55AE; Server&#xFF0C;&#x662F;&#x6C92;&#x8FA6;&#x6CD5;&#x4F7F;&#x7528;&#x4E0B;&#x5217;&#x5B98;&#x65B9;&#x7684;&#x9019;&#x500B;&#x4F5C;&#x6CD5;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EchoSocket = <span class="built_in">require</span>(<span class="string">&apos;laravel-echo&apos;</span>);</div><div class="line"><span class="built_in">window</span>.EchoSocket = <span class="keyword">new</span> Echo({</div><div class="line">    <span class="attr">broadcaster</span>: <span class="string">&apos;socket.io&apos;</span>,</div><div class="line">    <span class="attr">host</span>: <span class="string">&apos;http://127.0.0.1:3000&apos;</span></div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x56E0;&#x70BA;&#x4E26;&#x6C92;&#x6709;&#x5BE6;&#x4F5C;&#x5C0D;&#x61C9;&#x7684; laravel-echo &#x7684;&#x51FD;&#x5F0F;&#x7684;&#x8655;&#x7406;&#x90E8;&#x5206;&#xFF0C;&#x82E5;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x8A71;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B98;&#x65B9;&#x5EFA;&#x8B70;&#x7684; <a href="https://github.com/tlaverdure/laravel-echo-server" target="_blank" rel="external">laravel-echo-server</a> &#x4F86;&#x505A; Node.js &#x7684; Echo Server&#x3002;&#x63DB;&#x53E5;&#x8A71;&#x8AAA;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x60F3;&#x6210; laravel-echo-server &#x5C31;&#x662F;&#x81EA;&#x67B6; pusher server &#x7684;&#x611F;&#x89BA;&#x3002;</p>
+<h5 id="log-&#x6A21;&#x5F0F;"><a href="#log-&#x6A21;&#x5F0F;" class="headerlink" title="- log &#x6A21;&#x5F0F;"></a>- log &#x6A21;&#x5F0F;</h5><p>&#x5982;&#x679C;&#x4F7F;&#x7528; log &#x7684;&#x8A71;&#xFF0C;Laravel &#x50C5;&#x662F;&#x5C07;&#x4E8B;&#x4EF6;&#x5305;&#x7684;&#x8CC7;&#x6599;&#x5BEB;&#x5165;&#x81F3;&#x8A18;&#x9304;&#x6A94; <code>storage/logs/laravel.log</code> &#x4E2D;&#xFF0C;&#x5167;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">[2016-09-06 03:32:14] local.INFO: Broadcasting [App\Events\ChatMessageWasReceived]</div><div class="line">  on channels [pub-room.9453, pri-room.1, pri-room.2, pre-room.1] with payload:</div><div class="line">{</div><div class="line">    &quot;chatMessage&quot;: {</div><div class="line">        &quot;id&quot;: 25,</div><div class="line">        &quot;message&quot;: &quot;ABC&quot;,</div><div class="line">        &quot;user_id&quot;: &quot;1&quot;,</div><div class="line">    },</div><div class="line">    &quot;user&quot;: {</div><div class="line">        &quot;id&quot;: 1,</div><div class="line">        &quot;name&quot;: &quot;Patrick Stewart&quot;</div><div class="line">    }</div><div class="line">    &quot;socket&quot;: null</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x9019;&#x6A23;&#x65B9;&#x5F0F;&#x901A;&#x5E38;&#x7528;&#x65BC; debug &#x7684;&#x6642;&#x5019;&#xFF0C;&#x6AA2;&#x67E5;&#x4F3A;&#x670D;&#x767C;&#x9001;&#x4E8B;&#x4EF6;&#x5305;&#x983B;&#x9053;&#x4EE5;&#x53CA;&#x5167;&#x5BB9;&#x662F;&#x5426;&#x6B63;&#x78BA;</p>
+<h5 id="null-&#x6A21;&#x5F0F;"><a href="#null-&#x6A21;&#x5F0F;" class="headerlink" title="- null &#x6A21;&#x5F0F;"></a>- null &#x6A21;&#x5F0F;</h5><p>&#x7576;&#x9A45;&#x52D5;&#x6A21;&#x5F0F;&#x70BA; null &#x6642;&#xFF0C;&#x8868;&#x793A;&#x95DC;&#x9589;&#x5EE3;&#x64AD;&#x529F;&#x80FD;</p>
+<h3 id="&#x4E8B;&#x4EF6;"><a href="#&#x4E8B;&#x4EF6;" class="headerlink" title="&#x4E8B;&#x4EF6;"></a>&#x4E8B;&#x4EF6;</h3><p>&#x5728;&#x9019;&#x908A;&#x6211;&#x7A31;&#x5B83;&#x70BA;&#x4E8B;&#x4EF6;&#x5305;(&#x5C01;&#x5305;)&#xFF0C;&#x662F;&#x6574;&#x500B;&#x5EE3;&#x64AD;&#x7CFB;&#x7D71;&#x7684;&#x4E3B;&#x89D2;&#x3002;&#x767C;&#x9001;&#x5230;&#x983B;&#x9053;&#x7684;&#x4E8B;&#x4EF6;&#x5305;&#x985E;&#x5225;&#xFF0C;&#x90FD;&#x5FC5;&#x9700;&#x5BE6;&#x4F5C; <code>ShouldBroadcast</code> &#x4ECB;&#x9762;&#x624D;&#x884C;&#xFF0C;&#x901A;&#x5E38;&#x6703;&#x653E;&#x81F3; app/Events &#x8CC7;&#x6599;&#x593E;(&#x5728; v5.3 &#x6B64;&#x8CC7;&#x6599;&#x593E;&#x5DF2;&#x88AB;&#x79FB;&#x9664;&#x4E86;&#xFF0C;&#x76F8;&#x5C0D;&#x7684;&#x539F;&#x672C;&#x5728; 5.2 &#x4E2D;&#x62BD;&#x8C61;&#x985E;&#x5225; Event &#x4E5F;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x82E5;&#x9700;&#x8981;&#x518D;&#x81EA;&#x884C;&#x5EFA;&#x7ACB;&#x4E26;&#x7E7C;&#x627F;)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// app/Events/ChatMessageWasReceived.php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChatMessageWasReceived</span> <span class="keyword">implements</span> <span class="title">ShouldBroadcast</span></span>{</div><div class="line">    <span class="keyword">use</span> <span class="title">InteractsWithSockets</span>, <span class="title">SerializesModels</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> $user; <span class="comment">// Eloquent ORM Model</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x5305;&#x4E2D;&#x7684;&#x516C;&#x958B;&#x5C6C;&#x6027;&#xFF0C;&#x5728;&#x50B3;&#x9001;&#x6642;&#x5C07;&#x6703;&#x81EA;&#x52D5;&#x5E8F;&#x5217;&#x5316;&#x6210;&#x8CC7;&#x6599;&#x5982;&#x4E0B;</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    <span class="attr">&quot;user&quot;</span>: {</div><div class="line">        <span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</div><div class="line">        <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Patrick Stewart&quot;</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x4F46;&#x5047;&#x8A2D;&#x4F60;&#x5E0C;&#x671B;&#x7684;&#x8CC7;&#x6599;&#x662F;&#x9019;&#x6A23;&#x5B50;</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    <span class="attr">&quot;id&quot;</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">&quot;created_at&quot;</span>: <span class="string">&quot;2016-09-05 12:11:10&quot;</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x8FFD;&#x52A0;&#x5B9A;&#x7FA9; <code>broadcastWith</code> &#x91CD;&#x65B0;&#x7D44;&#x5408;&#x7684;&#x8CC7;&#x6599;&#x683C;&#x5F0F;&#x6216;&#x8FFD;&#x52A0;&#x5176;&#x5B83;&#x6240;&#x9700;&#x8CC7;&#x6599;</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">broadcastWith</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">return</span> [</div><div class="line">        <span class="string">&apos;id&apos;</span> =&gt; <span class="keyword">$this</span>-&gt;user-&gt;name,</div><div class="line">        <span class="string">&apos;created_at&apos;</span> =&gt; date(<span class="string">&apos;Y-m-d H:i:s&apos;</span>)</div><div class="line">    ];</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x800C; <code>broadcastOn</code> &#x5B9A;&#x7FA9;&#x4E86;&#x7576;&#x4E8B;&#x4EF6;&#x88AB;&#x9001;&#x51FA;&#x6642;&#xFF0C;&#x6703;&#x767C;&#x9001;&#x81F3;&#x54EA;&#x4E9B;&#x983B;&#x9053;&#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x6253;&#x7B97;&#x4E00;&#x6B21;&#x767C;&#x9001;&#x81F3;&#x4E0D;&#x540C;&#x7684;&#x983B;&#x9053;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x9663;&#x5217;&#x65B9;&#x5F0F;&#x56DE;&#x50B3;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">broadcastOn</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    <span class="keyword">return</span> [</div><div class="line">        <span class="string">&quot;pub-room.9453&quot;</span>, <span class="comment">// &#x516C;&#x958B;&#x983B;&#x9053;</span></div><div class="line">        <span class="keyword">new</span> PrivateChannel(<span class="string">&quot;pri-room.1&quot;</span>), <span class="comment">// &#x79C1;&#x6709;&#x983B;&#x9053;</span></div><div class="line">        <span class="keyword">new</span> PrivateChannel(<span class="string">&quot;pri-room.2&quot;</span>), <span class="comment">// &#x79C1;&#x6709;&#x983B;&#x9053;</span></div><div class="line">        <span class="keyword">new</span> PresenceChannel(<span class="string">&quot;pre-room.1&quot;</span>), <span class="comment">// &#x65E2;&#x5B58;&#x983B;&#x9053;</span></div><div class="line">    ];</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x9664;&#x4E86;&#x4E8B;&#x4EF6;&#x5305;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x767C;&#x9001; <a href="https://laravel.tw/docs/5.3/broadcasting#notifications" target="_blank" rel="external">&#x901A;&#x77E5;(Notifications)</a> &#x81F3;&#x983B;&#x9053;&#x4E2D;</p>
+<h3 id="&#x983B;&#x9053;"><a href="#&#x983B;&#x9053;" class="headerlink" title="&#x983B;&#x9053;"></a>&#x983B;&#x9053;</h3><p>Laravel Echo &#x7684;&#x983B;&#x9053;&#x6709;&#x300C;&#x516C;&#x958B;&#x983B;&#x9053;&#x300D;&#x3001;&#x300C;&#x79C1;&#x6709;&#x983B;&#x9053;&#x300D;&#x3001;&#x300C;&#x65E2;&#x5B58;&#x983B;&#x9053;&#x300D;&#x4E09;&#x7A2E;</p>
+<h5 id="&#x516C;&#x958B;&#x983B;&#x9053;"><a href="#&#x516C;&#x958B;&#x983B;&#x9053;" class="headerlink" title="&#x516C;&#x958B;&#x983B;&#x9053;"></a>&#x516C;&#x958B;&#x983B;&#x9053;</h5><ul>
+<li>&#x6240;&#x6709;&#x4F7F;&#x7528;&#x8005;(&#x5305;&#x542B;&#x672A;&#x767B;&#x5165;&#x8A2A;&#x5BA2;)&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x6B64;&#x983B;&#x9053;&#x4E8B;&#x4EF6;</li>
+</ul>
+<p>&#x5BA2;&#x7AEF;&#x7BC4;&#x4F8B;&#x7A0B;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Echo.channel(<span class="string">&apos;chat-room.9453&apos;</span>)</div><div class="line">    .listen(<span class="string">&apos;ChatMessageWasReceived&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x6536;&#x5230; ChatMessageWasReceived &#x4E8B;&#x4EF6;&#x5305;&apos;</span>);</div><div class="line">    })</div><div class="line">    .notification(<span class="function"><span class="keyword">function</span>(<span class="params">notification</span>) </span>{</div><div class="line">        <span class="comment">// &#x5982;&#x679C; Laravel &#x767C;&#x9001;&#x7684;&#x4E0D;&#x662F; event&#xFF0C;&#x800C;&#x662F; notifications</span></div><div class="line">        <span class="comment">// &#x6703;&#x5728;&#x9019;&#x908A;&#x6536;&#x5230;&#x4E8B;&#x4EF6;</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x901A;&#x77E5;&#x4E8B;&#x4EF6;&apos;</span>, notification.type);</div><div class="line">    });</div></pre></td></tr></table></figure>
+<h5 id="&#x79C1;&#x6709;&#x983B;&#x9053;"><a href="#&#x79C1;&#x6709;&#x983B;&#x9053;" class="headerlink" title="&#x79C1;&#x6709;&#x983B;&#x9053;"></a>&#x79C1;&#x6709;&#x983B;&#x9053;</h5><ul>
+<li>&#x63A5;&#x6536;&#x983B;&#x9053;&#x4E8B;&#x4EF6;&#x7684;&#x4F7F;&#x7528;&#x8005;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x9A57;&#x8B49;(&#x8981;&#x6C42;&#x767B;&#x5165;)</li>
+<li>&#x6B64;&#x983B;&#x9053;&#x7684;&#x4F7F;&#x7528;&#x8005;&#x4E0D;&#x6703;&#x77E5;&#x9053;&#x6709;&#x5176;&#x5B83;&#x4F7F;&#x7528;&#x8005;&#x7684;&#x5B58;&#x5728;</li>
+</ul>
+<p>&#x5BA2;&#x7AEF;&#x7BC4;&#x4F8B;&#x7A0B;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Echo.private(<span class="string">&apos;live-room.999&apos;</span>)</div><div class="line">    .listen(<span class="string">&apos;ChatMessageWasReceived&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">&apos;&#x6536;&#x5230; ChatMessageWasReceived &#x4E8B;&#x4EF6;&#x5305;&apos;</span>);</div><div class="line">            <span class="built_in">console</span>.log( data.user, data.chatMessage);</div><div class="line">    })</div><div class="line">    .notification(<span class="function"><span class="keyword">function</span>(<span class="params">notification</span>) </span>{</div><div class="line">        <span class="comment">// &#x5982;&#x679C; Laravel &#x767C;&#x9001;&#x7684;&#x4E0D;&#x662F; event&#xFF0C;&#x800C;&#x662F; notifications</span></div><div class="line">        <span class="comment">// &#x6703;&#x5728;&#x9019;&#x908A;&#x6536;&#x5230;&#x4E8B;&#x4EF6;</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x901A;&#x77E5;&#x4E8B;&#x4EF6;&apos;</span>, notification.type);</div><div class="line">    });</div></pre></td></tr></table></figure>
+<h5 id="&#x65E2;&#x5B58;&#x983B;&#x9053;"><a href="#&#x65E2;&#x5B58;&#x983B;&#x9053;" class="headerlink" title="&#x65E2;&#x5B58;&#x983B;&#x9053;"></a>&#x65E2;&#x5B58;&#x983B;&#x9053;</h5><ul>
+<li>&#x63A5;&#x6536;&#x983B;&#x9053;&#x4E8B;&#x4EF6;&#x7684;&#x4F7F;&#x7528;&#x8005;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x9A57;&#x8B49;(&#x8981;&#x6C42;&#x767B;&#x5165;)</li>
+<li>&#x7576;&#x4F7F;&#x7528;&#x8005;&#x52A0;&#x5165;&#x6216;&#x96E2;&#x958B;&#x6B64;&#x983B;&#x9053;&#x6642;&#xFF0C;&#x6703;&#x5148;&#x89F8;&#x767C; <code>here</code>, <code>joining</code>, <code>leaving</code> &#x7B49;&#x4E8B;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x8005;&#x6703;&#x77E5;&#x9053;&#x5176;&#x5B83;&#x4F7F;&#x7528;&#x8005;&#x7684;&#x5B58;&#x5728;</li>
+</ul>
+<p>&#x5BA2;&#x7AEF;&#x7BC4;&#x4F8B;&#x7A0B;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Echo.join(<span class="string">&apos;chat-room.1&apos;</span>)</div><div class="line">    .here(<span class="function"><span class="keyword">function</span> (<span class="params">members</span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x76EE;&#x524D;&#x6B64;&#x983B;&#x9053;&#x6240;&#x6709;&#x4F7F;&#x7528;&#x8005;&#x6709;&#xFF1A;&apos;</span>);</div><div class="line">        <span class="built_in">console</span>.table(members);</div><div class="line">    })</div><div class="line">    .joining(<span class="function"><span class="keyword">function</span> (<span class="params">joiningMember, members</span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x6709;&#x4E00;&#x4F4D;&#x4F7F;&#x7528;&#x8005;&#x52A0;&#x5165;&#x4E86;&#x983B;&#x9053;&apos;</span>)</div><div class="line">        <span class="built_in">console</span>.table(joiningMember);</div><div class="line">    })</div><div class="line">    .leaving(<span class="function"><span class="keyword">function</span> (<span class="params">leavingMember, members</span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x6709;&#x4E00;&#x4F4D;&#x4F7F;&#x7528;&#x8005;&#x96E2;&#x958B;&#x4E86;&#x983B;&#x9053;&apos;</span>)</div><div class="line">        <span class="built_in">console</span>.table(leavingMember);</div><div class="line">    })</div><div class="line">    .listen(<span class="string">&apos;ChatMessageWasReceived&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x6536;&#x5230; ChatMessageWasReceived &#x4E8B;&#x4EF6;&#x5305;&apos;</span>);</div><div class="line">        <span class="built_in">console</span>.log( data.user, data.chatMessage);</div><div class="line">    })</div><div class="line">    .notification(<span class="function"><span class="keyword">function</span>(<span class="params">notification</span>) </span>{</div><div class="line">        <span class="comment">// &#x5982;&#x679C; Laravel &#x767C;&#x9001;&#x7684;&#x4E0D;&#x662F; event&#xFF0C;&#x800C;&#x662F; notifications</span></div><div class="line">        <span class="comment">// &#x6703;&#x5728;&#x9019;&#x908A;&#x6536;&#x5230;&#x4E8B;&#x4EF6;</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;&#x901A;&#x77E5;&#x4E8B;&#x4EF6;&apos;</span>, notification.type);</div><div class="line">    });</div></pre></td></tr></table></figure>
+<h3 id="&#x9A57;&#x8B49;"><a href="#&#x9A57;&#x8B49;" class="headerlink" title="&#x9A57;&#x8B49;"></a>&#x9A57;&#x8B49;</h3><p>&#x300C;&#x79C1;&#x6709;&#x983B;&#x9053;&#x300D;&#x548C;&#x300C;&#x65E2;&#x5B58;&#x983B;&#x9053;&#x300D;&#x57FA;&#x672C;&#x90FD;&#x6703;&#x5148;&#x6AA2;&#x67E5;&#x4F7F;&#x7528;&#x8005;&#x662F;&#x5426;&#x5DF2;&#x7D93;&#x767B;&#x5165;&#xFF0C;&#x63A5;&#x8457;&#x82E5;&#x9700;&#x8981;&#x9032;&#x968E;&#x9A57;&#x8B49;&#x5224;&#x65B7;&#x6B0A;&#x9650;&#x4E4B;&#x985E;(&#x4F8B;&#x5982;&#x67D0;&#x500B;&#x4F7F;&#x7528;&#x8005;&#x662F;&#x5426;&#x80FD;&#x9032;&#x5165;&#x67D0;&#x500B;&#x804A;&#x5929;&#x5BA4;)&#x7684;&#xFF0C;&#x5247;&#x9700;&#x8981;&#x5728; <code>app/Providers/BroadcastServiceProvider.php</code> &#x81EA;&#x884C;&#x5B9A;&#x7FA9;&#xFF0C;&#x8A18;&#x5F97;&#x8981;&#x5148;&#x5230; config/app.php &#x555F;&#x7528;(&#x628A; <code>App\Providers\BroadcastServiceProvider::class,</code> &#x7684;&#x8A3B;&#x89E3;&#x62FF;&#x6389;)&#x3002;&#x5728;&#x9019;&#x908A;&#x4E0D;&#x6703;&#x53BB;&#x5B9A;&#x7FA9;&#x516C;&#x958B;&#x983B;&#x9053;(&#x56E0;&#x70BA;&#x4E0D;&#x9700;&#x8981;&#x9A57;&#x8B49;)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span><span class="params">()</span></span></div><div class="line">{</div><div class="line">    <span class="comment">// &#x51FD;&#x5F0F;&#x5BE6;&#x4F5C;&#x4E86; `/broadcasting/auth` &#x7684;&#x9A57;&#x8B49;&#x8DEF;&#x7531;</span></div><div class="line">    Broadcast::routes();</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// ---- &#x500B;&#x4EBA;&#x79C1;&#x6709;&#x983B;&#x9053; ----</span></div><div class="line">    Broadcast::channel(<span class="string">&apos;App.User.*&apos;</span>, <span class="function"><span class="keyword">function</span> <span class="params">($user, $userId)</span> </span>{</div><div class="line">        <span class="keyword">return</span> (int) $user-&gt;id === (int) $userId;</div><div class="line">    });</div><div class="line"></div><div class="line">    <span class="comment">// &#x7576;&#x5BA2;&#x7AEF;&#x4F7F;&#x7528; Echo.private(&apos;App.User.123&apos;) &#x6642;&#xFF0C;&#x82E5;&#x9019;&#x908A;&#x537B;&#x6C92;&#x6709;&#x8A2D;&#x5B9A;&#x5C0D;&#x61C9;&#x7684;</span></div><div class="line">    <span class="comment">// Broadcast::channel(&apos;App.User.*&apos;)&#x3002;&#x5373;&#x4FBF;&#x4F7F;&#x7528;&#x8005;&#x5DF2;&#x7D93;&#x767B;&#x5165;&#xFF0C;&#x5BA2;&#x7AEF;&#x90A3;&#x908A;&#x4E5F;&#x6703;</span></div><div class="line">    <span class="comment">// &#x5674; 403 (Forbidden) &#x932F;&#x8AA4;&#xFF0C;&#x8996;&#x540C; return false</span></div><div class="line"></div><div class="line">    <span class="comment">// ---- &#x65E2;&#x5B58;&#x983B;&#x9053; - &#x804A;&#x5929;&#x5BA4; ----</span></div><div class="line">    Broadcast::channel(<span class="string">&apos;chat-room.*&apos;</span>, <span class="function"><span class="keyword">function</span> <span class="params">($user, $chatroomId)</span> </span>{</div><div class="line">        $userCanEntry = $user-&gt;checkCanEntry($chatroomId);<span class="comment">// &#x662F;&#x5426;&#x80FD;&#x9032;&#x5165;&#x6B64;&#x804A;&#x5929;&#x5BA4;</span></div><div class="line">        <span class="keyword">if</span> (userCanEntry) {</div><div class="line">            <span class="keyword">return</span> [</div><div class="line">                <span class="string">&apos;id&apos;</span> =&gt; $user-&gt;id,</div><div class="line">                <span class="string">&apos;name&apos;</span> =&gt; $user-&gt;name,</div><div class="line">                <span class="string">&apos;age&apos;</span> =&gt; $user-&gt;age</div><div class="line">            ];</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span></div><div class="line">        }</div><div class="line">    });</div><div class="line">}</div></pre></td></tr></table></figure>
+
+      
+
+    </div>
+    
+
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+
+      </footer>
+    
+  </div>
+  
+    
+  <nav id="article-nav">
+    
+      <a href="/2016/09/05/Cloud9 with Laravel 5.3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title">
+          <span>&lt;</span>&nbsp;
+          
+            Cloud9 with Laravel 5.3
+          
+        </div>
+      </a>
+    
+
+    
+      <a href="/2016/10/14/laravel 5.3 in openshift/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">
+          laravel 5.3 in openshift
+          &nbsp;<span>&gt;</span>
+        </div>
+      </a>
+    
+
+  </nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the
+        <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+  </section>
+
+
+
+
+      </section>
+
+      <footer id="footer">
+  
+
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liao San Kai &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>,
+      theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+
+
+      
+  <script>
+    var disqus_shortname = 'liaosankai';
+
+    
+      var disqus_url = 'http://blog.liaosankai.com/2016/09/06/Laravel Echo 概述篇/';
+    
+
+    
+      var js = 'embed.js';
+    
+
+    (function () {
+      var d = document;
+      var s = d.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//' + disqus_shortname + '.disqus.com/' + js;
+      s.setAttribute('data-timestamp', + new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+    </div>
+
+  </body>
+
+</html>

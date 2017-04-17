@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+
+  <title>
+
+    
+      laravel 5.3 in openshift
+    
+
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x96D6;&amp;#x7136; openshift &amp;#x6709;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684; Laravel &amp;#x5361;&amp;#x5323;(cartridge)&amp;#xFF0C;&amp;#x4F46;&amp;#x7248;&amp;#x672C;&amp;#x53EA;&amp;#x5230; 5.0 &amp;#x7248;&amp;#x672C;&amp;#xFF0C;&amp;#x74B0;&amp;#x5883;&amp;#x4E5F;&amp;#x5">
+<meta name="keywords" content="php,laravel,openshift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="laravel 5.3 in openshift">
+<meta property="og:url" content="http://blog.liaosankai.com/2016/10/14/laravel 5.3 in openshift/index.html">
+<meta property="og:site_name" content="SanKai's Blog">
+<meta property="og:description" content="&amp;#x96D6;&amp;#x7136; openshift &amp;#x6709;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684; Laravel &amp;#x5361;&amp;#x5323;(cartridge)&amp;#xFF0C;&amp;#x4F46;&amp;#x7248;&amp;#x672C;&amp;#x53EA;&amp;#x5230; 5.0 &amp;#x7248;&amp;#x672C;&amp;#xFF0C;&amp;#x74B0;&amp;#x5883;&amp;#x4E5F;&amp;#x5">
+<meta property="og:updated_time" content="2017-04-17T03:31:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="laravel 5.3 in openshift">
+<meta name="twitter:description" content="&amp;#x96D6;&amp;#x7136; openshift &amp;#x6709;&amp;#x63D0;&amp;#x4F9B;&amp;#x7684; Laravel &amp;#x5361;&amp;#x5323;(cartridge)&amp;#xFF0C;&amp;#x4F46;&amp;#x7248;&amp;#x672C;&amp;#x53EA;&amp;#x5230; 5.0 &amp;#x7248;&amp;#x672C;&amp;#xFF0C;&amp;#x74B0;&amp;#x5883;&amp;#x4E5F;&amp;#x5">
+
+  
+
+  
+
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+</head>
+
+
+  <body>
+
+    <div id="container">
+
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      
+      
+        <a id="logo" class="logo" href="/"></a>
+      
+      
+      <nav id="main-nav">
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.liaosankai.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+      <section id="main" class="outer">
+        
+  <article id="post-laravel 5.3 in openshift" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      laravel 5.3 in openshift
+    </h1>
+  
+
+
+      </header>
+    
+
+    <div class="article-meta">
+      <a href="/2016/10/14/laravel 5.3 in openshift/" class="article-date %>">
+  <time datetime="2016-10-13T16:00:00.000Z" itemprop="datePublished">
+    2016-10-14
+  </time>
+</a>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/程式/">程式</a>
+  </div>
+
+
+
+      
+        <div class="article-comment-link-wrap">
+          <a href="http://blog.liaosankai.com/2016/10/14/laravel 5.3 in openshift/#disqus_thread" class="article-comment-link">
+            評論
+          </a>
+        </div>
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x96D6;&#x7136; openshift &#x6709;&#x63D0;&#x4F9B;&#x7684; Laravel &#x5361;&#x5323;(cartridge)&#xFF0C;&#x4F46;&#x7248;&#x672C;&#x53EA;&#x5230; 5.0 &#x7248;&#x672C;&#xFF0C;&#x74B0;&#x5883;&#x4E5F;&#x53EA;&#x6709; PHP 5.4&#xFF0C;&#x7121;&#x6CD5;&#x6EFF;&#x8DB3; Laravel 5.3 &#x7684;&#x6700;&#x4F4E;&#x9700;&#x6C42; <code>PHP &gt;= 5.6.4</code> &#x3002;&#x6240;&#x4EE5;&#x9019;&#x908A;&#x5C07;&#x8A18;&#x9304;&#x5982;&#x4F55;&#x5728; openshift &#x5B89;&#x88DD; PHP 5.6.4 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x74B0;&#x5883;&#x3002;</p>
+<h2 id="PHP-7-0-MySQL5-5-&#x7684;&#x74B0;&#x5883;"><a href="#PHP-7-0-MySQL5-5-&#x7684;&#x74B0;&#x5883;" class="headerlink" title="PHP 7.0 + MySQL5.5 &#x7684;&#x74B0;&#x5883;"></a>PHP 7.0 + MySQL5.5 &#x7684;&#x74B0;&#x5883;</h2><h3 id="1-&#x5B89;&#x88DD;-nginx-&#x5361;&#x5323;"><a href="#1-&#x5B89;&#x88DD;-nginx-&#x5361;&#x5323;" class="headerlink" title="(1) &#x5B89;&#x88DD; nginx &#x5361;&#x5323;"></a>(1) &#x5B89;&#x88DD; nginx &#x5361;&#x5323;</h3><p>&#x5B98;&#x65B9; github&#xFF1A;</p>
+<pre><code>https://github.com/boekkooi/openshift-cartridge-nginx
+</code></pre><p>&#x5361;&#x5323;&#x4F4D;&#x7F6E;&#xFF1A;</p>
+<pre><code>http://cartreflect-claytondev.rhcloud.com/github/boekkooi/openshift-cartridge-nginx
+</code></pre><a id="more"></a>
+<h3 id="2-&#x5B89;&#x88DD;-PHP-&#x5361;&#x5323;"><a href="#2-&#x5B89;&#x88DD;-PHP-&#x5361;&#x5323;" class="headerlink" title="(2) &#x5B89;&#x88DD; PHP &#x5361;&#x5323;"></a>(2) &#x5B89;&#x88DD; PHP &#x5361;&#x5323;</h3><p>&#x5B98;&#x65B9; github&#xFF1A;</p>
+<pre><code>https://github.com/boekkooi/openshift-cartridge-php
+</code></pre><p>&#x5361;&#x5323;&#x4F4D;&#x7F6E;&#xFF1A;</p>
+<pre><code>http://cartreflect-claytondev.rhcloud.com/github/boekkooi/openshift-cartridge-php
+</code></pre><h3 id="3-&#x5B89;&#x88DD;-Openshfit-&#x63D0;&#x4F9B;&#x7684;&#x5B98;&#x65B9;-MySQL-5-5-&#x5361;&#x5323;"><a href="#3-&#x5B89;&#x88DD;-Openshfit-&#x63D0;&#x4F9B;&#x7684;&#x5B98;&#x65B9;-MySQL-5-5-&#x5361;&#x5323;" class="headerlink" title="(3) &#x5B89;&#x88DD; Openshfit &#x63D0;&#x4F9B;&#x7684;&#x5B98;&#x65B9; MySQL 5.5 &#x5361;&#x5323;"></a>(3) &#x5B89;&#x88DD; Openshfit &#x63D0;&#x4F9B;&#x7684;&#x5B98;&#x65B9; MySQL 5.5 &#x5361;&#x5323;</h3><p>&#x9019;&#x908A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684; MySQL 5.5 &#x5361;&#x5323;&#xFF0C;&#x5B89;&#x88DD;&#x5B8C;&#x7562;&#x5F8C;&#xFF0C;&#x6703;&#x6709;&#x767B;&#x5165;&#x7684;&#x5E33;&#x865F;&#x5BC6;&#x78BC;&#x3001;&#x8CC7;&#x6599;&#x5EAB;&#x540D;&#x7A31;&#xFF0C;&#x6284;&#x9304;&#x4E0B;&#x4F86;&#xFF0C;&#x7B49;&#x6703;&#x5152;&#x6703;&#x4F7F;&#x7528;&#x5230;&#x3002;</p>
+<h3 id="4-git-clone-&#x5C08;&#x6848;&#x6A94;"><a href="#4-git-clone-&#x5C08;&#x6848;&#x6A94;" class="headerlink" title="(4) git clone &#x5C08;&#x6848;&#x6A94;"></a>(4) git clone &#x5C08;&#x6848;&#x6A94;</h3><p>&#x900F;&#x904E; git &#x5C07;&#x5C08;&#x6848;&#x6A94; clone &#x5230;&#x672C;&#x6A5F;&#xFF0C;&#x5728;&#x9019;&#x500B;&#x52D5;&#x4F5C;&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x5148;&#x5230; openshift &#x7684;&#x5F8C;&#x53F0;&#xFF0C;&#x5C07;&#x81EA;&#x5DF1;&#x7684; ssh-key &#x767B;&#x9304;&#x9032;&#x53BB;</p>
+<h3 id="5-&#x4FEE;&#x6539;-nginx-&#x8A2D;&#x5B9A;"><a href="#5-&#x4FEE;&#x6539;-nginx-&#x8A2D;&#x5B9A;" class="headerlink" title="(5) &#x4FEE;&#x6539; nginx &#x8A2D;&#x5B9A;"></a>(5) &#x4FEE;&#x6539; nginx &#x8A2D;&#x5B9A;</h3><p>&#x5C07; <code>.openshift/nginx.conf.erb</code> &#x7684;&#x5167;&#x5BB9;&#xFF0C;&#x627E;&#x5230;&#x8A72;&#x90E8;&#x5206;</p>
+<pre><code>server {
+    listen  &lt;%= ENV[&apos;OPENSHIFT_NGINX_IP&apos;] %&gt;:&lt;%= ENV[&apos;OPENSHIFT_NGINX_PORT&apos;] %&gt;;
+    root    &lt;%= ENV[&apos;OPENSHIFT_REPO_DIR&apos;] %&gt;/public;
+
+    location / {
+        index  index.html index.htm;
+    }
+}
+</code></pre><p>&#x4FEE;&#x6539;&#x70BA;</p>
+<pre><code>server {
+    listen  &lt;%= ENV[&apos;OPENSHIFT_NGINX_IP&apos;] %&gt;:&lt;%= ENV[&apos;OPENSHIFT_NGINX_PORT&apos;] %&gt;;
+    root    &lt;%= ENV[&apos;OPENSHIFT_REPO_DIR&apos;] %&gt;/public;
+
+    index index.html index.htm index.php;
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    location ~ \.php$ {
+      fastcgi_split_path_info ^(.+\.php)(/.+)$;
+      fastcgi_pass unix:&lt;%= ENV[&apos;OPENSHIFT_PHP_SOCKET&apos;] %&gt;;
+      fastcgi_index index.php;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param PATH_INFO $fastcgi_script_name;
+      include &lt;%= ENV[&apos;OPENSHIFT_NGINX_DIR&apos;] %&gt;/usr/nginx-&lt;%= ENV[&apos;OPENSHIFT_NGINX_VERSION&apos;] %&gt;/conf/fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+</code></pre><h3 id="6-&#x5EFA;&#x7ACB;-openshift-&#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;"><a href="#6-&#x5EFA;&#x7ACB;-openshift-&#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;" class="headerlink" title="(6) &#x5EFA;&#x7ACB; openshift &#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;"></a>(6) &#x5EFA;&#x7ACB; openshift &#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;</h3><p>&#x5EFA;&#x7ACB; <code>.openshift/action_hooks/build</code> &#x6A94;&#x6848;&#xFF0C;&#x5167;&#x5BB9;&#x70BA;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">set</span> <span class="_">-e</span></div><div class="line"></div><div class="line"><span class="comment"># Build PHP extra&apos;s</span></div><div class="line"><span class="comment"># Update conf/ini files and install pecl extensions</span></div><div class="line"><span class="variable">${OPENSHIFT_PHP_DIR}</span>/bin/control build</div></pre></td></tr></table></figure>
+<p>&#x8A2D;&#x5B9A;&#x57F7;&#x884C;&#x6B0A;&#x9650; <code>chmod +x .openshift/action_hooks/build</code> &#x82E5;&#x662F;&#x5728; window &#x4F60;&#x5FC5;&#x9700;&#x900F;&#x904E; <code>git update-index --chmod=+x .openshift/action_hooks/build</code> &#x4F86;&#x8A2D;&#x5B9A;&#x3002;&#x9019;&#x500B;&#x8173;&#x672C;&#x662F;&#x70BA;&#x4E86; openshift &#x5728; build &#x6642;&#x6703;&#x53BB;&#x8A66;&#x8457;&#x627E; .openshift/fpm &#x548C; .openshift/cli &#x7684;&#x8A2D;&#x5B9A;&#x6A94;&#x4F86;&#x8986;&#x5BEB;&#x539F;&#x672C; php.ini &#x6216; nginx &#x7684;&#x8A2D;&#x5B9A;&#x6A94;</p>
+<h3 id="7-&#x4F7F;&#x7528;&#x81EA;&#x8A02;&#x8A2D;&#x5B9A;&#x6A94;&#x4FEE;&#x6B63;-MySQL-&#x7684;-socket-&#x8DEF;&#x5F91;&#x8A2D;&#x5B9A;&#x932F;&#x8AA4;&#x7684;&#x554F;&#x984C;"><a href="#7-&#x4F7F;&#x7528;&#x81EA;&#x8A02;&#x8A2D;&#x5B9A;&#x6A94;&#x4FEE;&#x6B63;-MySQL-&#x7684;-socket-&#x8DEF;&#x5F91;&#x8A2D;&#x5B9A;&#x932F;&#x8AA4;&#x7684;&#x554F;&#x984C;" class="headerlink" title="(7) &#x4F7F;&#x7528;&#x81EA;&#x8A02;&#x8A2D;&#x5B9A;&#x6A94;&#x4FEE;&#x6B63; MySQL &#x7684; socket &#x8DEF;&#x5F91;&#x8A2D;&#x5B9A;&#x932F;&#x8AA4;&#x7684;&#x554F;&#x984C;"></a>(7) &#x4F7F;&#x7528;&#x81EA;&#x8A02;&#x8A2D;&#x5B9A;&#x6A94;&#x4FEE;&#x6B63; MySQL &#x7684; socket &#x8DEF;&#x5F91;&#x8A2D;&#x5B9A;&#x932F;&#x8AA4;&#x7684;&#x554F;&#x984C;</h3><p>&#x5F9E;&#x9019;&#x908A; <code>https://github.com/boekkooi/openshift-cartridge-php/tree/master/conf</code> &#x4E0B;&#x8F09;&#x4E09;&#x500B;&#x8A2D;&#x5B9A;&#x6A94;</p>
+<ul>
+<li>php.ini.erb &#x4E0B;&#x8F09;&#x81F3; .openshift/cli/php.ini.erb</li>
+<li>php-fpm.ini.erb &#x4E0B;&#x8F09;&#x81F3; .openshift/fpm/php.ini.erb</li>
+<li>php-fpm.conf.erb &#x4E0B;&#x8F09;&#x81F3;  .openshift/fpm/php-fpm.conf.erb</li>
+</ul>
+<p>&#x5728; <code>.openshift/cli/php.ini.erb</code> &#x548C; <code>.openshift/fpm/php.ini.erb</code> &#x8A2D;&#x5B9A;&#x6A94;&#x5167;&#x5BB9;&#xFF0C;&#x641C;&#x5C0B;&#x4E09;&#x500B;&#x5C6C;&#x6027;</p>
+<pre><code>pdo_mysql.default_socket =
+mysql.default_socket =
+mysqli.default_socket =
+</code></pre><p>&#x8A2D;&#x5B9A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>pdo_mysql.default_socket = &lt;%= defined?(ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;]) ? ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;] : &apos;&apos; %&gt;
+mysql.default_socket = &lt;%= defined?(ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;]) ? ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;] : &apos;&apos; %&gt;
+mysqli.default_socket = &lt;%= defined?(ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;]) ? ENV[&apos;OPENSHIFT_MYSQL_DB_SOCKET&apos;] : &apos;&apos; %&gt;
+</code></pre><p>&#x5728; <code>.openshift/fpm/php-fpm.conf.erb</code> &#x8A2D;&#x5B9A;&#x6A94;&#x5167;&#x5BB9;&#x627E;&#x5230;</p>
+<pre><code>;Informational Environment Variables
+</code></pre><p>&#x8FFD;&#x52A0;&#x7F3A;&#x5C11;&#x7684;&#x74B0;&#x5883;&#x8B8A;&#x6578;</p>
+<pre><code>env[OPENSHIFT_SECRET_TOKEN] = $OPENSHIFT_SECRET_TOKEN
+</code></pre><h3 id="8-&#x6E2C;&#x8A66;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x7DDA;"><a href="#8-&#x6E2C;&#x8A66;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x7DDA;" class="headerlink" title="(8) &#x6E2C;&#x8A66;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x7DDA;"></a>(8) &#x6E2C;&#x8A66;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x7DDA;</h3><p>&#x63A5;&#x8457;&#x4E0B;&#x8F09; <a href="https://www.adminer.org/#download" target="_blank" rel="external">adminer.php</a> &#x81F3; public/adminer.php&#x3002;&#x7136;&#x5F8C; git push &#x5C08;&#x6848;&#x6A94;&#x5F8C;&#xFF0C;&#x958B;&#x555F; <code>http://{app-name}-{username}.rhcloud.com</code> &#x8F38;&#x5165;&#x6B65;&#x9A5F;(3)&#x6240;&#x6284;&#x9304;&#x7684;&#x767B;&#x5165;&#x5E33;&#x865F;&#x5BC6;&#x78BC;&#xFF0C;&#x9032;&#x884C;&#x8CC7;&#x6599;&#x5EAB;&#x9023;&#x7DDA;&#x6E2C;&#x8A66;</p>
+<h2 id="Laravel-5-3-&#x5B89;&#x88DD;"><a href="#Laravel-5-3-&#x5B89;&#x88DD;" class="headerlink" title="Laravel 5.3 &#x5B89;&#x88DD;"></a>Laravel 5.3 &#x5B89;&#x88DD;</h2><h3 id="1-&#x5728;&#x672C;&#x5730;&#x7AEF;&#x900F;&#x904E;-composer-&#x5B89;&#x88DD;&#x597D;-laravel-5-2"><a href="#1-&#x5728;&#x672C;&#x5730;&#x7AEF;&#x900F;&#x904E;-composer-&#x5B89;&#x88DD;&#x597D;-laravel-5-2" class="headerlink" title="(1) &#x5728;&#x672C;&#x5730;&#x7AEF;&#x900F;&#x904E; composer &#x5B89;&#x88DD;&#x597D; laravel 5.2"></a>(1) &#x5728;&#x672C;&#x5730;&#x7AEF;&#x900F;&#x904E; composer &#x5B89;&#x88DD;&#x597D; laravel 5.2</h3><p>&#x5148;&#x5728;&#x672C;&#x5730;&#x7AEF;&#x900F;&#x904E; composer create-project &#x2013;prefer-dist laravel/laravel blog &#x5B89;&#x88DD; laravel 5.3 &#x5F8C;&#xFF0C;&#x518D;&#x628A;&#x6574;&#x500B; blog &#x7684;&#x5167;&#x5BB9;&#x79FB;&#x52D5;&#x8986;&#x5BEB;&#x5230; openshift &#x5C08;&#x6848;&#x8CC7;&#x6599;&#x593E;</p>
+<h3 id="2-&#x4FEE;&#x6539;-laravel-&#x8A2D;&#x5B9A;&#x6A94;"><a href="#2-&#x4FEE;&#x6539;-laravel-&#x8A2D;&#x5B9A;&#x6A94;" class="headerlink" title="(2) &#x4FEE;&#x6539; laravel &#x8A2D;&#x5B9A;&#x6A94;"></a>(2) &#x4FEE;&#x6539; laravel &#x8A2D;&#x5B9A;&#x6A94;</h3><p>config/app.php</p>
+<pre><code>[
+    &apos;url&apos; =&gt; env(&apos;APP_URL&apos;, env(&apos;OPENSHIFT_APP_DNS&apos;, &apos;http://localhost&apos;)),
+    &apos;key&apos; =&gt; env(&apos;APP_KEY&apos;, env(&apos;OPENSHIFT_SECRET_TOKEN&apos;)),
+]
+</code></pre><p>config/database.php</p>
+<pre><code>&apos;connections&apos; =&gt; [
+    &apos;sqlite&apos; =&gt; [
+        &apos;driver&apos;   =&gt; &apos;sqlite&apos;,
+        &apos;database&apos; =&gt; storage_path().&apos;/database.sqlite3&apos;,
+        &apos;prefix&apos;   =&gt; &apos;&apos;,
+    ],
+    &apos;mysql&apos; =&gt; [
+        &apos;driver&apos;    =&gt; &apos;mysql&apos;,
+        &apos;host&apos;      =&gt; env(&apos;DB_HOST&apos;, env(&apos;OPENSHIFT_MYSQL_DB_HOST&apos;, &apos;localhost&apos;)),
+        &apos;port&apos;      =&gt; env(&apos;DB_PORT&apos;, env(&apos;OPENSHIFT_MYSQL_DB_PORT&apos;, 3306)),
+        &apos;database&apos;  =&gt; env(&apos;DB_DATABASE&apos;, env(&apos;OPENSHIFT_APP_NAME&apos;, &apos;forge&apos;)),
+        &apos;username&apos;  =&gt; env(&apos;DB_USERNAME&apos;, env(&apos;OPENSHIFT_MYSQL_DB_USERNAME&apos;, &apos;forge&apos;)),
+        &apos;password&apos;  =&gt; env(&apos;DB_PASSWORD&apos;, env(&apos;OPENSHIFT_MYSQL_DB_PASSWORD&apos;, &apos;&apos;)),
+        &apos;charset&apos;   =&gt; &apos;utf8&apos;,
+        &apos;collation&apos; =&gt; &apos;utf8_unicode_ci&apos;,
+        &apos;prefix&apos;    =&gt; &apos;&apos;,
+        &apos;strict&apos;    =&gt; false,
+    ],
+    &apos;pgsql&apos; =&gt; [
+        &apos;driver&apos;   =&gt; &apos;pgsql&apos;,
+        &apos;host&apos;     =&gt; env(&apos;DB_HOST&apos;, env(&apos;OPENSHIFT_POSTGRESQL_DB_HOST&apos;, &apos;localhost&apos;)),
+        &apos;port&apos;     =&gt; env(&apos;DB_PORT&apos;, env(&apos;OPENSHIFT_POSTGRESQL_DB_PORT&apos;, 5432)),
+        &apos;database&apos; =&gt; env(&apos;DB_DATABASE&apos;, env(&apos;OPENSHIFT_APP_NAME&apos;, &apos;forge&apos;)),
+        &apos;username&apos; =&gt; env(&apos;DB_USERNAME&apos;, env(&apos;OPENSHIFT_POSTGRESQL_DB_USERNAME&apos;, &apos;forge&apos;)),
+        &apos;password&apos; =&gt; env(&apos;DB_PASSWORD&apos;, env(&apos;OPENSHIFT_POSTGRESQL_DB_PASSWORD&apos;, &apos;&apos;)),
+        &apos;charset&apos;  =&gt; &apos;utf8&apos;,
+        &apos;prefix&apos;   =&gt; &apos;&apos;,
+        &apos;schema&apos;   =&gt; &apos;public&apos;,
+    ]
+],
+// ... &#x7565; ...
+</code></pre><h3 id="3-&#x8FFD;&#x52A0;-for-laravel-&#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;&#x5167;&#x5BB9;"><a href="#3-&#x8FFD;&#x52A0;-for-laravel-&#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;&#x5167;&#x5BB9;" class="headerlink" title="(3) &#x8FFD;&#x52A0; for laravel &#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;&#x5167;&#x5BB9;"></a>(3) &#x8FFD;&#x52A0; for laravel &#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;&#x5167;&#x5BB9;</h3><p>&#x65B0;&#x589E;&#x4E26;&#x7DE8;&#x8F2F; <code>.openshift/action_hooks/deploy</code> &#x6A94;&#x6848;&#xFF0C;<strong>&#x6CE8;&#x610F;&#xFF01;&#x4E0D;&#x662F; build</strong> &#xFF0C;&#x5728; build &#x7684;&#x4E8B;&#x4EF6;&#x8173;&#x672C;&#x662F;&#x7121;&#x6CD5;&#x5C0D;&#x8CC7;&#x6599;&#x5EAB;&#x9032;&#x884C;&#x9023;&#x7DDA;&#xFF0C;&#x9019;&#x6703;&#x5C0E;&#x81F4; php artisan migrate &#x7684;&#x932F;&#x8AA4;&#x3002;&#x8A2D;&#x5B9A;&#x57F7;&#x884C;&#x6B0A;&#x9650; <code>chmod +x .openshift/action_hooks/deploy</code> &#x82E5;&#x662F;&#x5728; window &#x4F60;&#x5FC5;&#x9700;&#x900F;&#x904E; <code>git update-index --chmod=+x .openshift/action_hooks/deploy</code> &#x4F86;&#x8A2D;&#x5B9A;&#x3002;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">( <span class="built_in">cd</span> <span class="variable">$OPENSHIFT_REPO_DIR</span> ; composer install --no-interaction --no-dev )</div><div class="line"><span class="built_in">source</span> <span class="variable">$OPENSHIFT_CARTRIDGE_SDK_BASH</span></div><div class="line"></div><div class="line"><span class="built_in">set</span> <span class="_">-e</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line"><span class="built_in">echo</span> <span class="string">&quot;Setting environment variables...&quot;</span> 1&gt;&amp;2</div><div class="line"></div><div class="line"><span class="built_in">export</span> APP_ENV=<span class="string">&quot;<span class="variable">${APPLICATION_ENV:-production}</span>&quot;</span></div><div class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">${APPLICATION_ENV:-}</span>&quot;</span> != <span class="string">&quot;development&quot;</span> ]]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> APP_DEBUG=<span class="literal">false</span></div><div class="line"><span class="keyword">else</span></div><div class="line">  <span class="built_in">export</span> APP_DEBUG=<span class="literal">true</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$(type -t set_env_var)</span>&quot;</span> == <span class="string">&quot;function&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  set_env_var <span class="string">&apos;APP_ENV&apos;</span> <span class="variable">$APP_ENV</span> <span class="variable">$OPENSHIFT_HOMEDIR</span>/.env/user_vars</div><div class="line">  set_env_var <span class="string">&apos;APP_DEBUG&apos;</span> <span class="variable">$APP_DEBUG</span> <span class="variable">$OPENSHIFT_HOMEDIR</span>/.env/user_vars</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -z <span class="string">&quot;<span class="variable">$OPENSHIFT_APP_DNS</span>&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> APP_URL=<span class="string">&quot;<span class="variable">$OPENSHIFT_APP_DNS</span>&quot;</span></div><div class="line">  <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$(type -t set_env_var)</span>&quot;</span> == <span class="string">&quot;function&quot;</span> ]; <span class="keyword">then</span></div><div class="line">    set_env_var <span class="string">&apos;APP_URL&apos;</span> <span class="variable">$APP_URL</span> <span class="variable">$OPENSHIFT_HOMEDIR</span>/.env/user_vars</div><div class="line">  <span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -z <span class="string">&quot;<span class="variable">$OPENSHIFT_SECRET_TOKEN</span>&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> APP_KEY=<span class="variable">${OPENSHIFT_SECRET_TOKEN:0:31}</span></div><div class="line">  <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$(type -t set_env_var)</span>&quot;</span> == <span class="string">&quot;function&quot;</span> ]; <span class="keyword">then</span></div><div class="line">    set_env_var <span class="string">&apos;APP_KEY&apos;</span> <span class="variable">$APP_KEY</span> <span class="variable">$OPENSHIFT_HOMEDIR</span>/.env/user_vars</div><div class="line">  <span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -z <span class="string">&quot;<span class="variable">$OPENSHIFT_POSTGRESQL_DB_HOST</span>&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> DB_DRIVER=<span class="string">&quot;pgsql&quot;</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ ! -z <span class="string">&quot;<span class="variable">$OPENSHIFT_MYSQL_DB_HOST</span>&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">export</span> DB_DRIVER=<span class="string">&quot;mysql&quot;</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$DB_DRIVER</span>&quot;</span> ]; <span class="keyword">then</span></div><div class="line">  <span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;Could not find the database cartridge.  Please run:&quot;</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;rhc cartridge add -a <span class="variable">$OPENSHIFT_APP_NAME</span> -c mysql-5.5&quot;</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;or&quot;</span></div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;rhc cartridge add -a <span class="variable">$OPENSHIFT_APP_NAME</span> -c postgresql-9.2&quot;</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;then make a sample commit (add whitespace somewhere) and re-push&quot;</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">exit</span> 5</div><div class="line"><span class="keyword">else</span></div><div class="line">  <span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> <span class="string">&quot;Database driver set to &apos;<span class="variable">$DB_DRIVER</span>&apos;...&quot;</span> 1&gt;&amp;2</div><div class="line">  <span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line">  <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$(type -t set_env_var)</span>&quot;</span> == <span class="string">&quot;function&quot;</span> ]; <span class="keyword">then</span></div><div class="line">    set_env_var <span class="string">&apos;DB_DRIVER&apos;</span> <span class="variable">$DB_DRIVER</span> <span class="variable">$OPENSHIFT_HOMEDIR</span>/.env/user_vars</div><div class="line">  <span class="keyword">fi</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line"><span class="built_in">echo</span> <span class="string">&quot;Migrating storage and log directories...&quot;</span> 1&gt;&amp;2</div><div class="line"><span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line"><span class="comment"># If this is initial installation, copy the default storage directory</span></div><div class="line"><span class="comment"># from official Laravel installation and remove the log directory</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="keyword">if</span> [ ! <span class="_">-d</span> <span class="variable">${OPENSHIFT_DATA_DIR}</span>storage ]; <span class="keyword">then</span></div><div class="line">  mv <span class="variable">${OPENSHIFT_REPO_DIR}</span>storage <span class="variable">${OPENSHIFT_DATA_DIR}</span>storage</div><div class="line">  rm -rf <span class="variable">${OPENSHIFT_DATA_DIR}</span>storage/logs</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"><span class="comment"># Create symlink to new storage directory location</span></div><div class="line">ln -sf <span class="variable">${OPENSHIFT_DATA_DIR}</span>storage   <span class="variable">${OPENSHIFT_REPO_DIR}</span>storage</div><div class="line"></div><div class="line"><span class="comment"># Create a symlink to the new log directory location</span></div><div class="line">ln -sf <span class="variable">${OPENSHIFT_LOG_DIR}</span>   <span class="variable">${OPENSHIFT_DATA_DIR}</span>storage/logs</div><div class="line"></div><div class="line"><span class="comment"># Use repository .env</span></div><div class="line"><span class="keyword">if</span> [  <span class="_">-f</span> <span class="variable">${OPENSHIFT_REPO_DIR}</span>.openshift/.env ]; <span class="keyword">then</span></div><div class="line">  cp <span class="_">-f</span> <span class="variable">${OPENSHIFT_REPO_DIR}</span>.openshift/.env <span class="variable">${OPENSHIFT_REPO_DIR}</span>/.env</div><div class="line"><span class="keyword">fi</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line"><span class="built_in">echo</span> <span class="string">&quot;Running &apos;php artisan migrate --force&apos;...&quot;</span> 1&gt;&amp;2</div><div class="line"><span class="built_in">echo</span> 1&gt;&amp;2</div><div class="line"></div><div class="line"><span class="built_in">pushd</span> <span class="variable">${OPENSHIFT_REPO_DIR}</span> &gt; /dev/null</div><div class="line">php artisan migrate --force</div><div class="line"><span class="built_in">popd</span> &gt; /dev/null</div></pre></td></tr></table></figure>
+      
+
+    </div>
+    
+
+    
+      <footer class="article-footer">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openshift/">openshift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+
+      </footer>
+    
+  </div>
+  
+    
+  <nav id="article-nav">
+    
+      <a href="/2016/09/06/Laravel Echo 概述篇/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title">
+          <span>&lt;</span>&nbsp;
+          
+            Laravel Echo 概述篇
+          
+        </div>
+      </a>
+    
+
+    
+      <a href="/2017/03/21/Hexo 備忘錄/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">
+          Hexo 備忘錄
+          &nbsp;<span>&gt;</span>
+        </div>
+      </a>
+    
+
+  </nav>
+
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the
+        <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+      </noscript>
+    </div>
+  </section>
+
+
+
+
+      </section>
+
+      <footer id="footer">
+  
+
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Liao San Kai &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>,
+      theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+
+
+      
+  <script>
+    var disqus_shortname = 'liaosankai';
+
+    
+      var disqus_url = 'http://blog.liaosankai.com/2016/10/14/laravel 5.3 in openshift/';
+    
+
+    
+      var js = 'embed.js';
+    
+
+    (function () {
+      var d = document;
+      var s = d.createElement('script');
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//' + disqus_shortname + '.disqus.com/' + js;
+      s.setAttribute('data-timestamp', + new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+    </div>
+
+  </body>
+
+</html>
