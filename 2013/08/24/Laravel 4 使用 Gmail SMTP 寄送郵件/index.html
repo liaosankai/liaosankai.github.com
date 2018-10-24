@@ -18,8 +18,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Laravel 4 使用 Gmail SMTP 寄送郵件">
 <meta property="og:url" content="http://blog.liaosankai.com/2013/08/24/Laravel 4 使用 Gmail SMTP 寄送郵件/index.html">
-<meta property="og:site_name" content="SanKai's Blog">
+<meta property="og:site_name" content="SanKai&#39;s Blog">
 <meta property="og:description" content="&amp;#x5728;&amp;#x672C;&amp;#x5730;&amp;#x7AEF;&amp;#x958B;&amp;#x767C;&amp;#x90F5;&amp;#x4EF6;&amp;#x5BC4;&amp;#x9001;&amp;#x7A0B;&amp;#x5F0F;&amp;#x7684;&amp;#x6642;&amp;#x5019;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x6C92;&amp;#x6709; SMTP &amp;#x4F3A;&amp;#x670D;&amp;#x5668;&amp;#x6642;&amp;#">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="http://blog.liaosankai.com/2013/08/24/Laravel%204%20使用%20Gmail%20SMTP%20寄送郵件/BU6dy4eVRTqWutE64CX4_openssl_enabled.png">
 <meta property="og:image" content="http://blog.liaosankai.com/2013/08/24/Laravel%204%20使用%20Gmail%20SMTP%20寄送郵件/pPzLmJUTjqyGoy148Hfs_google-gen-password.png">
 <meta property="og:image" content="http://blog.liaosankai.com/2013/08/24/Laravel%204%20使用%20Gmail%20SMTP%20寄送郵件/MmaNFktpTyW4kAatmRxY_google-app-password.png">
@@ -136,7 +137,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#x5728;&#x672C;&#x5730;&#x7AEF;&#x958B;&#x767C;&#x90F5;&#x4EF6;&#x5BC4;&#x9001;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709; SMTP &#x4F3A;&#x670D;&#x5668;&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x7528; <a href="http://goo.gl/XkyPvP" target="_blank" rel="external">Gmail &#x7684;&#x5916;&#x5BC4;&#x90F5;&#x4EF6;(SMTP)&#x4F3A;&#x670D;&#x5668;</a>&#xFF0C;&#x4F86;&#x9032;&#x884C;&#x90F5;&#x4EF6;&#x7684;&#x5BC4;&#x9001;&#x3002;Laravel 4 &#x4F7F;&#x7528;  <a href="http://swiftmailer.org/" target="_blank" rel="external">Swift Mailer</a> &#x5957;&#x4EF6;&#x8655;&#x7406;&#x767C;&#x9001;&#x4F5C;&#x696D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x9032;&#x968E;&#x7684;&#x90F5;&#x4EF6;&#x5BC4;&#x9001;&#x898F;&#x5247;&#xFF0C;&#x53EF;&#x4EE5;&#x53C3;&#x8003;&#x5B98;&#x65B9; API &#x6587;&#x4EF6;&#xFF0C;&#x81EA;&#x884C;&#x9032;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x64F4;&#x5145;&#x3002;</p>
+        <p>&#x5728;&#x672C;&#x5730;&#x7AEF;&#x958B;&#x767C;&#x90F5;&#x4EF6;&#x5BC4;&#x9001;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709; SMTP &#x4F3A;&#x670D;&#x5668;&#x6642;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x7528; <a href="http://goo.gl/XkyPvP" target="_blank" rel="noopener">Gmail &#x7684;&#x5916;&#x5BC4;&#x90F5;&#x4EF6;(SMTP)&#x4F3A;&#x670D;&#x5668;</a>&#xFF0C;&#x4F86;&#x9032;&#x884C;&#x90F5;&#x4EF6;&#x7684;&#x5BC4;&#x9001;&#x3002;Laravel 4 &#x4F7F;&#x7528;  <a href="http://swiftmailer.org/" target="_blank" rel="noopener">Swift Mailer</a> &#x5957;&#x4EF6;&#x8655;&#x7406;&#x767C;&#x9001;&#x4F5C;&#x696D;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x9032;&#x968E;&#x7684;&#x90F5;&#x4EF6;&#x5BC4;&#x9001;&#x898F;&#x5247;&#xFF0C;&#x53EF;&#x4EE5;&#x53C3;&#x8003;&#x5B98;&#x65B9; API &#x6587;&#x4EF6;&#xFF0C;&#x81EA;&#x884C;&#x9032;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x64F4;&#x5145;&#x3002;</p>
 <a id="more"></a>
 <h3 id="&#x74B0;&#x5883;&#x78BA;&#x8A8D;"><a href="#&#x74B0;&#x5883;&#x78BA;&#x8A8D;" class="headerlink" title="&#x74B0;&#x5883;&#x78BA;&#x8A8D;"></a>&#x74B0;&#x5883;&#x78BA;&#x8A8D;</h3><p><img src="/2013/08/24/Laravel 4 &#x4F7F;&#x7528; Gmail SMTP &#x5BC4;&#x9001;&#x90F5;&#x4EF6;/BU6dy4eVRTqWutE64CX4_openssl_enabled.png" alt="openssl_enabled.png"><br>&#x56E0;&#x70BA;&#x662F;&#x900F;&#x904E;&#x5B89;&#x5168;&#x9023;&#x7DDA;&#x8ACB;&#x6C42;&#x767C;&#x9001;&#x90F5;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x9700;&#x78BA;&#x8A8D; PHP &#x7684; openssl &#x662F;&#x5426;&#x5DF2;&#x7D93;&#x555F;&#x7528;&#x3002;&#x53EF;&#x4EE5;&#x5F9E; phpinfo &#x5F97;&#x5230;&#x76F8;&#x95DC;&#x8A0A;&#x606F;&#x5982;&#x4E0B;&#x5716;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709;&#x51FA;&#x73FE;&#x5C31;&#x8868;&#x793A;&#x6C92;&#x6709;&#x6B63;&#x78BA;&#x555F;&#x7528;&#xFF0C;&#x8ACB;&#x4FEE;&#x6539; php.ini &#x9032;&#x884C;&#x555F;&#x7528;&#xFF0C;&#x82E5;&#x4ECD;&#x7136;&#x6709;&#x554F;&#x984C;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x6AA2;&#x67E5; log &#x8A18;&#x9304;&#x6A94;&#x4F86;&#x6392;&#x9664;&#x3002;</p>
 <h3 id="&#x90F5;&#x4EF6;&#x8A2D;&#x5B9A;&#x6A94;"><a href="#&#x90F5;&#x4EF6;&#x8A2D;&#x5B9A;&#x6A94;" class="headerlink" title="&#x90F5;&#x4EF6;&#x8A2D;&#x5B9A;&#x6A94;"></a>&#x90F5;&#x4EF6;&#x8A2D;&#x5B9A;&#x6A94;</h3><p>Laravel &#x91DD;&#x5C0D;&#x90F5;&#x4EF6;&#x90E8;&#x5206;&#x7684;&#x8A2D;&#x5B9A;&#x6A94;&#x4F4D;&#x65BC; <code>app/config/email.php</code> &#x6A94;&#x6848;&#x4E2D;&#xFF0C;&#x5927;&#x81F4;&#x4E0A;&#x7684;&#x8A2D;&#x5B9A;&#x6A94;&#x5167;&#x5BB9;&#x5982;&#x4E0B;(&#x70BA;&#x4E86;&#x7C21;&#x6F54;&#x79FB;&#x9664;&#x8A3B;&#x89E3;&#x90E8;&#x5206;)&#xFF0C;&#x50C5;&#x5C0D;&#x7279;&#x5225;&#x90E8;&#x5206;&#x9032;&#x884C;&#x8AAA;&#x660E;&#xFF1A;</p>
@@ -156,7 +157,7 @@ return array(
     &apos;pretend&apos; =&gt; false,
 );
 </code></pre><p>Gmail &#x63D0;&#x4F9B;&#x4E86;&#x5169;&#x7A2E;&#x9023;&#x7DDA;&#x65B9;&#x5F0F;&#x4F86;&#x5BC4;&#x9001;&#x90F5;&#x4EF6;&#x3002;&#x5206;&#x5225;&#x662F; <strong>TLS(port:587)</strong> &#x8207; <strong>SSL(port:465)</strong> &#xFF0C;&#x6240;&#x4EE5;&#x8ACB;&#x4F9D;&#x7167;&#x9700;&#x6C42;&#xFF0C;&#x5404;&#x5225;&#x8A2D;&#x5B9A;&#x5C0D;&#x61C9;&#x7684; <code>port</code> &#x8207; <code>encryption</code> &#x5169;&#x500B;&#x53C3;&#x6578;&#x3002;</p>
-<p>&#x5728; <code>password</code> &#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7D93;&#x7533;&#x8ACB;&#x4E86; Google &#x7684;&#x624B;&#x6A5F;&#x9A57;&#x8B49;&#x767B;&#x5165;&#x65B9;&#x6CD5;(&#x4E5F;&#x5C31;&#x662F;&#x4F60;&#x767B;&#x5165; Gmail &#x9700;&#x8981;&#x8F38;&#x5165; Google &#x767C;&#x9001;&#x7D66;&#x4F60;&#x7684;&#x7C21;&#x8A0A;&#x78BC;)&#xFF0C;&#x9019;&#x6642;&#x5019;&#x5C31;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x822C;&#x767B;&#x5165; Gmail &#x7684;&#x5BC6;&#x78BC;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x900F;&#x904E; Google &#x7522;&#x751F;&#x7684; <strong>&#x61C9;&#x7528;&#x7A0B;&#x5F0F;&#x5C08;&#x7528;&#x5BC6;&#x78BC;</strong>&#x3002;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5F9E; <a href="https://accounts.google.com/b/0/IssuedAuthSubTokens?hl=zh_TW" target="_blank" rel="external">&#x500B;&#x4EBA;&#x5E33;&#x6236;&#x9801;&#x9762;&#xBB;&#x5B89;&#x5168;&#x6027;&#xBB;&#x5DF2;&#x9023;&#x7D50;&#x7684;&#x61C9;&#x7528;&#x7A0B;&#x5F0F;&#x548C;&#x7DB2;&#x7AD9;</a> &#x4F86;&#x5EFA;&#x7ACB;&#x4E00;&#x7D44;&#x65B0;&#x5BC6;&#x78BC;&#x3002;</p>
+<p>&#x5728; <code>password</code> &#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7D93;&#x7533;&#x8ACB;&#x4E86; Google &#x7684;&#x624B;&#x6A5F;&#x9A57;&#x8B49;&#x767B;&#x5165;&#x65B9;&#x6CD5;(&#x4E5F;&#x5C31;&#x662F;&#x4F60;&#x767B;&#x5165; Gmail &#x9700;&#x8981;&#x8F38;&#x5165; Google &#x767C;&#x9001;&#x7D66;&#x4F60;&#x7684;&#x7C21;&#x8A0A;&#x78BC;)&#xFF0C;&#x9019;&#x6642;&#x5019;&#x5C31;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x4E00;&#x822C;&#x767B;&#x5165; Gmail &#x7684;&#x5BC6;&#x78BC;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x900F;&#x904E; Google &#x7522;&#x751F;&#x7684; <strong>&#x61C9;&#x7528;&#x7A0B;&#x5F0F;&#x5C08;&#x7528;&#x5BC6;&#x78BC;</strong>&#x3002;&#x6211;&#x5011;&#x53EF;&#x4EE5;&#x5F9E; <a href="https://accounts.google.com/b/0/IssuedAuthSubTokens?hl=zh_TW" target="_blank" rel="noopener">&#x500B;&#x4EBA;&#x5E33;&#x6236;&#x9801;&#x9762;&#xBB;&#x5B89;&#x5168;&#x6027;&#xBB;&#x5DF2;&#x9023;&#x7D50;&#x7684;&#x61C9;&#x7528;&#x7A0B;&#x5F0F;&#x548C;&#x7DB2;&#x7AD9;</a> &#x4F86;&#x5EFA;&#x7ACB;&#x4E00;&#x7D44;&#x65B0;&#x5BC6;&#x78BC;&#x3002;</p>
 <p><img src="/2013/08/24/Laravel 4 &#x4F7F;&#x7528; Gmail SMTP &#x5BC4;&#x9001;&#x90F5;&#x4EF6;/pPzLmJUTjqyGoy148Hfs_google-gen-password.png" alt="google-gen-password.png"></p>
 <p>Google &#x7CFB;&#x7D71;&#x5C07;&#x7522;&#x751F;&#x4E00;&#x7D44;&#x5BC6;&#x78BC;&#x5982;&#x4E0B;&#x5716;&#x3002;&#x96D6;&#x7136;&#x986F;&#x793A;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x6BCF;&#x56DB;&#x500B;&#x5B57;&#x6BCD;&#x6709;&#x4E00;&#x500B;&#x7A7A;&#x767D;&#xFF0C;&#x4F46;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x8ACB;&#x5FFD;&#x7565;&#x7A7A;&#x767D;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
 <p><img src="/2013/08/24/Laravel 4 &#x4F7F;&#x7528; Gmail SMTP &#x5BC4;&#x9001;&#x90F5;&#x4EF6;/MmaNFktpTyW4kAatmRxY_google-app-password.png" alt="google-app-password.png"></p>
@@ -178,7 +179,7 @@ Route::get(&apos;gmail_test&apos;, function()
     });
 });
 </code></pre><blockquote>
-<p> &#x611F;&#x8B1D; <a href="http://blog.kejyun.com/" target="_blank" rel="external">Kejyun</a> &#x63D0;&#x9192;&#x5982;&#x679C;&#x5728;&#x533F;&#x540D;&#x51FD;&#x5F0F;&#x8981;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x5FC5;&#x9700;&#x4F7F;&#x7528; use() &#x9019;&#x500B;&#x65B9;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F;&#x5FC5;&#x9700;&#x5728;&#x7248;&#x672C; 5.3 &#x5F8C;&#x624D;&#x652F;&#x63F4;&#xFF0C;&#x8A73;&#x7D30;&#x53EF;&#x4EE5;&#x53C3;&#x8003; <a href="http://goo.gl/vkTS" target="_blank" rel="external">PHP &#x5B98;&#x65B9;&#x8AAA;&#x660E;</a>] (2013-08-25 &#x88DC;&#x8A18;)</p>
+<p> &#x611F;&#x8B1D; <a href="http://blog.kejyun.com/" target="_blank" rel="noopener">Kejyun</a> &#x63D0;&#x9192;&#x5982;&#x679C;&#x5728;&#x533F;&#x540D;&#x51FD;&#x5F0F;&#x8981;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x7684;&#x8B8A;&#x6578;&#xFF0C;&#x5FC5;&#x9700;&#x4F7F;&#x7528; use() &#x9019;&#x500B;&#x65B9;&#x6CD5;&#xFF0C;&#x6CE8;&#x610F;&#x5FC5;&#x9700;&#x5728;&#x7248;&#x672C; 5.3 &#x5F8C;&#x624D;&#x652F;&#x63F4;&#xFF0C;&#x8A73;&#x7D30;&#x53EF;&#x4EE5;&#x53C3;&#x8003; <a href="http://goo.gl/vkTS" target="_blank" rel="noopener">PHP &#x5B98;&#x65B9;&#x8AAA;&#x660E;</a>] (2013-08-25 &#x88DC;&#x8A18;)</p>
 </blockquote>
 <p>&#x63A5;&#x8457;&#x6211;&#x5011;&#x5728;&#x700F;&#x89BD;&#x5668;&#x8F38;&#x5165; <code>http://127.0.0.1/your-laravel/public/gmail_test</code> &#x6E2C;&#x8A66;&#x767C;&#x9001;&#x3002;&#x5982;&#x679C;&#x5BC4;&#x9001;&#x6210;&#x529F;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6536;&#x5230;&#x4E00;&#x5C01;&#x900F;&#x904E; Gmail &#x9001;&#x7D66;&#x81EA;&#x5DF1;&#x7684;&#x90F5;&#x4EF6;&#x3002;</p>
 <p><img src="/2013/08/24/Laravel 4 &#x4F7F;&#x7528; Gmail SMTP &#x5BC4;&#x9001;&#x90F5;&#x4EF6;/4CDLS4RNQpumY01Mqq6g_gmail-test.png" alt="gmail-test.png"></p>
@@ -206,20 +207,20 @@ Route::get(&apos;gmail_test&apos;, function()
     
   <nav id="article-nav">
     
-      <a href="/2013/08/21/Netbean UTF-8 中文亂碼處理 in Win7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <a href="/2014/12/12/Ruby 安裝 on Window 快速指南/" id="article-nav-newer" class="article-nav-link-wrap">
         <div class="article-nav-title">
           <span>&lt;</span>&nbsp;
           
-            Netbean UTF-8 中文亂碼處理 in Win7
+            Ruby 安裝 on Window 快速指南
           
         </div>
       </a>
     
 
     
-      <a href="/2014/12/12/Ruby 安裝 on Window 快速指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <a href="/2013/08/21/Netbean UTF-8 中文亂碼處理 in Win7/" id="article-nav-older" class="article-nav-link-wrap">
         <div class="article-nav-title">
-          Ruby 安裝 on Window 快速指南
+          Netbean UTF-8 中文亂碼處理 in Win7
           &nbsp;<span>&gt;</span>
         </div>
       </a>
@@ -250,7 +251,7 @@ Route::get(&apos;gmail_test&apos;, function()
 
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Liao San Kai &nbsp;
+      &copy; 2018 Liao San Kai &nbsp;
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>,
       theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
