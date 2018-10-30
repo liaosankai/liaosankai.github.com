@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.liaosankai.com/2017/03/22/laragon%20-%20Win%20%E7%B3%BB%E7%B5%B1%20laravel%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/</loc>
+    
+    <lastmod>2018-10-30T06:01:01.689Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.liaosankai.com/2017/03/21/Hexo%20%E5%82%99%E5%BF%98%E9%8C%84/</loc>
+    
+    <lastmod>2018-10-30T03:15:34.152Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.liaosankai.com/2013/07/07/%E5%9C%A8%20win7%20%E5%AE%89%E8%A3%9D%20Composer/</loc>
     
     <lastmod>2018-10-24T03:49:31.860Z</lastmod>
@@ -37,49 +51,7 @@
   </url>
   
   <url>
-    <loc>http://blog.liaosankai.com/2015/04/30/Netbean%208%20%E4%BB%8B%E7%B4%B9/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.liaosankai.com/2013/08/21/Netbean%20UTF-8%20%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E8%99%95%E7%90%86%20in%20Win7/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.liaosankai.com/2014/12/12/Ruby%20%E5%AE%89%E8%A3%9D%20on%20Window%20%E5%BF%AB%E9%80%9F%E6%8C%87%E5%8D%97/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.liaosankai.com/2017/03/22/laragon%20-%20Win%20%E7%B3%BB%E7%B5%B1%20laravel%20%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.liaosankai.com/2017/03/21/Hexo%20%E5%82%99%E5%BF%98%E9%8C%84/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.liaosankai.com/2016/09/06/Laravel%20Echo%20%E6%A6%82%E8%BF%B0%E7%AF%87/</loc>
-    
-    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.liaosankai.com/2016/10/14/laravel%205.3%20in%20openshift/</loc>
     
     <lastmod>2017-04-17T03:31:09.000Z</lastmod>
     
@@ -107,7 +79,28 @@
   </url>
   
   <url>
-    <loc>http://blog.liaosankai.com/categories/index.html</loc>
+    <loc>http://blog.liaosankai.com/2016/09/06/Laravel%20Echo%20%E6%A6%82%E8%BF%B0%E7%AF%87/</loc>
+    
+    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.liaosankai.com/2016/10/14/laravel%205.3%20in%20openshift/</loc>
+    
+    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.liaosankai.com/2015/04/30/Netbean%208%20%E4%BB%8B%E7%B4%B9/</loc>
+    
+    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.liaosankai.com/2013/08/21/Netbean%20UTF-8%20%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC%E8%99%95%E7%90%86%20in%20Win7/</loc>
     
     <lastmod>2017-04-17T03:31:09.000Z</lastmod>
     
@@ -115,6 +108,13 @@
   
   <url>
     <loc>http://blog.liaosankai.com/about/index.html</loc>
+    
+    <lastmod>2017-04-17T03:31:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.liaosankai.com/categories/index.html</loc>
     
     <lastmod>2017-04-17T03:31:09.000Z</lastmod>
     
