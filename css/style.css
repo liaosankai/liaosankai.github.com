@@ -182,7 +182,7 @@ a.article-title,
 .article-entry .gist .gist-file .gist-meta a,
 .layout-wrap-inner .category-list a,
 .tag-cloud a {
-  color: #111;
+  color: #01579f;
   text-decoration: none;
   border-bottom: 1px dotted transparent;
 }
@@ -451,6 +451,10 @@ a.article-title:hover,
   font-size: 2em;
   font-weight: 700;
   line-height: 1em;
+  color: DarkSlateGray;
+}
+a.article-title {
+  color: DarkSlateGray;
 }
 .article-entry {
   color: #111;
@@ -478,6 +482,10 @@ a.article-title:hover,
   font-weight: 600;
   line-height: 1.4em;
   margin: 1em 0;
+}
+.article-entry h2 {
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid #eee;
 }
 .article-entry ul,
 .article-entry ol,

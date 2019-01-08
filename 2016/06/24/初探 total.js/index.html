@@ -13,18 +13,18 @@
   </title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x5728;&amp;#x773E;&amp;#x591A; node.js &amp;#x958B;&amp;#x767C;&amp;#x6846;&amp;#x67B6;&amp;#xFF0C;&amp;#x4F60;&amp;#x53EF;&amp;#x80FD;&amp;#x770B;&amp;#x904E; total.js &amp;#x540D;&amp;#x7A31;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x5C1A;&amp;#x672A;&amp;#x5BE6;&amp;#x96">
+  <meta name="description" content="在眾多 node.js 開發框架，你可能看過 total.js 名稱，如果你尚未實際嘗試它，這篇文章可以讓你大概了解 total.js 特色，因為官方文件實在太完整了，我不想弄的像官方文件翻譯文似的，所以盡可能依據使用的經驗，提及一些較為特別的地方。 麻雀雖小五臟俱全 (Small but complete)total.js 沒有依賴任何其它套件，但卻有包含常用的基本函式庫，像是 Email 發送">
 <meta name="keywords" content="node.js,total.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初探 total.js">
 <meta property="og:url" content="http://blog.liaosankai.com/2016/06/24/初探 total.js/index.html">
 <meta property="og:site_name" content="SanKai&#39;s Blog">
-<meta property="og:description" content="&amp;#x5728;&amp;#x773E;&amp;#x591A; node.js &amp;#x958B;&amp;#x767C;&amp;#x6846;&amp;#x67B6;&amp;#xFF0C;&amp;#x4F60;&amp;#x53EF;&amp;#x80FD;&amp;#x770B;&amp;#x904E; total.js &amp;#x540D;&amp;#x7A31;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x5C1A;&amp;#x672A;&amp;#x5BE6;&amp;#x96">
+<meta property="og:description" content="在眾多 node.js 開發框架，你可能看過 total.js 名稱，如果你尚未實際嘗試它，這篇文章可以讓你大概了解 total.js 特色，因為官方文件實在太完整了，我不想弄的像官方文件翻譯文似的，所以盡可能依據使用的經驗，提及一些較為特別的地方。 麻雀雖小五臟俱全 (Small but complete)total.js 沒有依賴任何其它套件，但卻有包含常用的基本函式庫，像是 Email 發送">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2017-04-17T03:31:09.000Z">
+<meta property="og:updated_time" content="2019-01-08T07:36:18.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初探 total.js">
-<meta name="twitter:description" content="&amp;#x5728;&amp;#x773E;&amp;#x591A; node.js &amp;#x958B;&amp;#x767C;&amp;#x6846;&amp;#x67B6;&amp;#xFF0C;&amp;#x4F60;&amp;#x53EF;&amp;#x80FD;&amp;#x770B;&amp;#x904E; total.js &amp;#x540D;&amp;#x7A31;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x4F60;&amp;#x5C1A;&amp;#x672A;&amp;#x5BE6;&amp;#x96">
+<meta name="twitter:description" content="在眾多 node.js 開發框架，你可能看過 total.js 名稱，如果你尚未實際嘗試它，這篇文章可以讓你大概了解 total.js 特色，因為官方文件實在太完整了，我不想弄的像官方文件翻譯文似的，所以盡可能依據使用的經驗，提及一些較為特別的地方。 麻雀雖小五臟俱全 (Small but complete)total.js 沒有依賴任何其它套件，但卻有包含常用的基本函式庫，像是 Email 發送">
 
   
 
@@ -152,38 +152,38 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&#x5728;&#x773E;&#x591A; node.js &#x958B;&#x767C;&#x6846;&#x67B6;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x770B;&#x904E; total.js &#x540D;&#x7A31;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5C1A;&#x672A;&#x5BE6;&#x969B;&#x5617;&#x8A66;&#x5B83;&#xFF0C;&#x9019;&#x7BC7;&#x6587;&#x7AE0;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x5927;&#x6982;&#x4E86;&#x89E3; total.js &#x7279;&#x8272;&#xFF0C;&#x56E0;&#x70BA;<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Getting%20started" target="_blank" rel="noopener">&#x5B98;&#x65B9;&#x6587;&#x4EF6;</a>&#x5BE6;&#x5728;&#x592A;&#x5B8C;&#x6574;&#x4E86;&#xFF0C;&#x6211;&#x4E0D;&#x60F3;&#x5F04;&#x7684;&#x50CF;&#x5B98;&#x65B9;&#x6587;&#x4EF6;&#x7FFB;&#x8B6F;&#x6587;&#x4F3C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x76E1;&#x53EF;&#x80FD;&#x4F9D;&#x64DA;&#x4F7F;&#x7528;&#x7684;&#x7D93;&#x9A57;&#xFF0C;&#x63D0;&#x53CA;&#x4E00;&#x4E9B;&#x8F03;&#x70BA;&#x7279;&#x5225;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
-<h3 id="&#x9EBB;&#x96C0;&#x96D6;&#x5C0F;&#x4E94;&#x81DF;&#x4FF1;&#x5168;-Small-but-complete"><a href="#&#x9EBB;&#x96C0;&#x96D6;&#x5C0F;&#x4E94;&#x81DF;&#x4FF1;&#x5168;-Small-but-complete" class="headerlink" title="&#x9EBB;&#x96C0;&#x96D6;&#x5C0F;&#x4E94;&#x81DF;&#x4FF1;&#x5168; (Small but complete)"></a>&#x9EBB;&#x96C0;&#x96D6;&#x5C0F;&#x4E94;&#x81DF;&#x4FF1;&#x5168; (Small but complete)</h3><p>total.js &#x6C92;&#x6709;&#x4F9D;&#x8CF4;&#x4EFB;&#x4F55;&#x5176;&#x5B83;&#x5957;&#x4EF6;&#xFF0C;&#x4F46;&#x537B;&#x6709;&#x5305;&#x542B;&#x5E38;&#x7528;&#x7684;&#x57FA;&#x672C;&#x51FD;&#x5F0F;&#x5EAB;&#xFF0C;&#x50CF;&#x662F; <a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkMail" title="Email &#x767C;&#x9001;" target="_blank" rel="noopener">Email &#x767C;&#x9001;</a>&#x3001;<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkImage" title="&#x8996;&#x5716;&#x5F15;&#x64CE;" target="_blank" rel="noopener">&#x5716;&#x7247;&#x8655;&#x7406;</a>&#x3001;<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkViews" title="&#x8996;&#x5716;&#x5F15;&#x64CE;" target="_blank" rel="noopener">&#x8996;&#x5716;&#x5F15;&#x64CE;</a>&#x3001;&#x751A;&#x81F3; <a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkWebSocketClient" title="Websocket" target="_blank" rel="noopener">Websocket</a> &#x9700;&#x6C42;&#x90FD;&#x5DF2;&#x7D93;&#x5728;&#x6574;&#x500B;&#x6846;&#x67B6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6C92;&#x6709;&#x5176;&#x5B83;&#x7279;&#x5225;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x61C9;&#x8A72;&#x5DF2;&#x7D93;&#x8DB3;&#x5920;&#x61C9;&#x4ED8;&#x5927;&#x591A;&#x7684;&#x60C5;&#x6CC1;&#x3002;&#x5C31;&#x7B97;&#x6709;&#x5176;&#x5B83;&#x7279;&#x5225;&#x9700;&#x8981;&#xFF0C;&#x4E5F;&#x80FD;&#x76F4;&#x63A5;&#x900F;&#x904E; NPM &#x8F09;&#x5165;&#x76F8;&#x95DC;&#x6A21;&#x7D44;&#x4F86;&#x4F7F;&#x7528;&#x3002;</p>
+        <p>在眾多 node.js 開發框架，你可能看過 total.js 名稱，如果你尚未實際嘗試它，這篇文章可以讓你大概了解 total.js 特色，因為<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Getting%20started" target="_blank" rel="noopener">官方文件</a>實在太完整了，我不想弄的像官方文件翻譯文似的，所以盡可能依據使用的經驗，提及一些較為特別的地方。</p>
+<h3 id="麻雀雖小五臟俱全-Small-but-complete"><a href="#麻雀雖小五臟俱全-Small-but-complete" class="headerlink" title="麻雀雖小五臟俱全 (Small but complete)"></a>麻雀雖小五臟俱全 (Small but complete)</h3><p>total.js 沒有依賴任何其它套件，但卻有包含常用的基本函式庫，像是 <a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkMail" title="Email 發送" target="_blank" rel="noopener">Email 發送</a>、<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkImage" title="視圖引擎" target="_blank" rel="noopener">圖片處理</a>、<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkViews" title="視圖引擎" target="_blank" rel="noopener">視圖引擎</a>、甚至 <a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkWebSocketClient" title="Websocket" target="_blank" rel="noopener">Websocket</a> 需求都已經在整個框架中，如果沒有其它特別的需求，應該已經足夠應付大多的情況。就算有其它特別需要，也能直接透過 NPM 載入相關模組來使用。</p>
 <a id="more"></a>
-<h3 id="&#x8C50;&#x5BCC;&#x7684;&#x6587;&#x4EF6;&#x8207;&#x7BC4;&#x4F8B;-Rich-docs-and-examples"><a href="#&#x8C50;&#x5BCC;&#x7684;&#x6587;&#x4EF6;&#x8207;&#x7BC4;&#x4F8B;-Rich-docs-and-examples" class="headerlink" title="&#x8C50;&#x5BCC;&#x7684;&#x6587;&#x4EF6;&#x8207;&#x7BC4;&#x4F8B; (Rich docs and examples)"></a>&#x8C50;&#x5BCC;&#x7684;&#x6587;&#x4EF6;&#x8207;&#x7BC4;&#x4F8B; (Rich docs and examples)</h3><p>&#x76F8;&#x8F03;&#x65BC;&#x5176;&#x5B83;&#x7684; node.js &#x6846;&#x67B6;&#xFF0C;total.js &#x7684;&#x6587;&#x4EF6;&#x76F8;&#x7576;&#x5B8C;&#x6574;&#xFF0C;&#x7279;&#x5225;&#x662F;&#x5728;&#x7BC4;&#x4F8B;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5E7E;&#x4E4E;&#x5728;&#x904E;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x554F;&#x984C;&#xFF0C;&#x90FD;&#x80FD;&#x627E;&#x5230;&#x89E3;&#x6C7A;&#x7BC4;&#x4F8B;&#x3002;&#x4E5F;&#x6709;<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Troubleshooting" target="_blank" rel="noopener">&#x6574;&#x7406;&#x597D;&#x7684;&#x554F;&#x984C;&#x96C6;</a>&#xFF0C;&#x6211;&#x751A;&#x81F3;&#x958B;&#x59CB;&#x61F7;&#x7591;&#x4F5C;&#x8005;&#x6709; 70% &#x4EE5;&#x4E0A;&#x7684;&#x6642;&#x9593;&#x90FD;&#x62FF;&#x53BB;&#x5BEB;&#x6587;&#x4EF6;&#x548C;&#x7BC4;&#x4F8B;&#x4E86;(&#x7B11;)&#x3002;</p>
-<h3 id="&#x7368;&#x7279;&#x7684;&#x8DEF;&#x7531;&#x65D7;&#x6A19;-Route-Flag"><a href="#&#x7368;&#x7279;&#x7684;&#x8DEF;&#x7531;&#x65D7;&#x6A19;-Route-Flag" class="headerlink" title="&#x7368;&#x7279;&#x7684;&#x8DEF;&#x7531;&#x65D7;&#x6A19; (Route Flag)"></a>&#x7368;&#x7279;&#x7684;&#x8DEF;&#x7531;&#x65D7;&#x6A19; (Route Flag)</h3><p>total.js &#x5728;&#x63A7;&#x5236;&#x5668;&#x8207;&#x8DEF;&#x7531;&#x4E2D;&#x5BE6;&#x4F5C;&#x4E00;&#x7A2E;<a href="(http://docs.totaljs.com/v1.9.x/en.html#api~HttpRouteOptionsFlags">&#x65D7;&#x6A19;</a>&#x7684;&#x6A5F;&#x5236;&#xFF0C;&#x50CF;&#x662F;&#x9650;&#x5B9A;&#x8ACB;&#x6C42;&#x985E;&#x578B;(get, put, post, delete)&#x3001;&#x6307;&#x5B9A;&#x4E2D;&#x4ECB;&#x8655;&#x7406;(#middleware-nam)&#x3001;&#x89D2;&#x8272;&#x9650;&#x5B9A;(@role)&#x3001;&#x6216;&#x9650;&#x5B9A;&#x4EE5; Ajax &#x65B9;&#x5F0F;&#x8ACB;&#x6C42;(xhr)&#x7B49;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x7D66;&#x4E88;&#x7684;&#x4E00;&#x500B;&#x6216;&#x591A;&#x500B;&#x4E0D;&#x540C;&#x65D7;&#x6A19;&#x5B8C;&#x6210;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<h3 id="豐富的文件與範例-Rich-docs-and-examples"><a href="#豐富的文件與範例-Rich-docs-and-examples" class="headerlink" title="豐富的文件與範例 (Rich docs and examples)"></a>豐富的文件與範例 (Rich docs and examples)</h3><p>相較於其它的 node.js 框架，total.js 的文件相當完整，特別是在範例的部分，幾乎在過程中遇到問題，都能找到解決範例。也有<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Troubleshooting" target="_blank" rel="noopener">整理好的問題集</a>，我甚至開始懷疑作者有 70% 以上的時間都拿去寫文件和範例了(笑)。</p>
+<h3 id="獨特的路由旗標-Route-Flag"><a href="#獨特的路由旗標-Route-Flag" class="headerlink" title="獨特的路由旗標 (Route Flag)"></a>獨特的路由旗標 (Route Flag)</h3><p>total.js 在控制器與路由中實作一種<a href="(http://docs.totaljs.com/v1.9.x/en.html#api~HttpRouteOptionsFlags">旗標</a>的機制，像是限定請求類型(get, put, post, delete)、指定中介處理(#middleware-nam)、角色限定(@role)、或限定以 Ajax 方式請求(xhr)等，都可以透過給予的一個或多個不同旗標完成。例如：</p>
 <pre><code>exports.install = function() {
-    // &#x4F7F;&#x7528;&#x8005;&#x70BA;&#x8A2A;&#x5BA2;(&#x672A;&#x767B;&#x5165;)&#x6642;&#xFF0C;&#x6703;&#x770B;&#x898B; view_homepage &#x6240;&#x5448;&#x73FE;&#x7684;&#x5167;&#x5BB9;
+    // 使用者為訪客(未登入)時，會看見 view_homepage 所呈現的內容
     F.route(&apos;/&apos;, view_homepage);
 
-    // &#x4F7F;&#x7528;&#x8005;&#x70BA;&#x7BA1;&#x7406;&#x54E1;(&#x5DF2;&#x767B;&#x5165;)&#x6642;&#xFF0C;&#x6703;&#x770B;&#x898B; view_admin &#x6240;&#x5448;&#x73FE;&#x7684;&#x5167;&#x5BB9;
+    // 使用者為管理員(已登入)時，會看見 view_admin 所呈現的內容
     F.route(&apos;/&apos;, view_admin, [&apos;authorize&apos;, &apos;@admin&apos;]);
 
-    // &#x4F7F;&#x7528;&#x8005;&#x70BA;&#x4E3B;&#x6301;&#x4EBA;(&#x5DF2;&#x767B;&#x5165;)&#x6642;&#xFF0C;&#x6703;&#x770B;&#x898B; view_moderator &#x6240;&#x5448;&#x73FE;&#x7684;&#x5167;&#x5BB9;
+    // 使用者為主持人(已登入)時，會看見 view_moderator 所呈現的內容
     F.route(&apos;/&apos;, view_moderator, [&apos;authorize&apos;, &apos;@moderator&apos;]);
 };
-</code></pre><p>&#x9019;&#x7A2E;&#x7279;&#x5225;&#x7684;&#x4F5C;&#x6CD5;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x52A0;&#x5165;&#x6216;&#x79FB;&#x9664;&#x65D7;&#x6A19;&#x4F86;&#x7570;&#x52D5;&#x984D;&#x5916;&#x9700;&#x6C42;&#xFF0C;&#x9019;&#x908A;&#x6709; total.js &#x4F5C;&#x8005;&#x5DF2;&#x7CBE;&#x5FC3;&#x6574;&#x7406;&#x4E00;&#x4E9B;<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Controllers" target="_blank" rel="noopener">&#x63A7;&#x5236;&#x5668;&#x8207;&#x65D7;&#x6A19;&#x7684;&#x5E38;&#x7528;&#x7BC4;&#x4F8B;&#x6E05;&#x55AE;</a></p>
-<h3 id="&#x8996;&#x5716;&#x5F15;&#x64CE;&#x8207;&#x672C;&#x5730;&#x5316;-Views-and-localization"><a href="#&#x8996;&#x5716;&#x5F15;&#x64CE;&#x8207;&#x672C;&#x5730;&#x5316;-Views-and-localization" class="headerlink" title="&#x8996;&#x5716;&#x5F15;&#x64CE;&#x8207;&#x672C;&#x5730;&#x5316; (Views and localization)"></a>&#x8996;&#x5716;&#x5F15;&#x64CE;&#x8207;&#x672C;&#x5730;&#x5316; (Views and localization)</h3><p>total.js &#x4F7F;&#x7528;&#x81EA;&#x5DF1;<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~View%20engine" target="_blank" rel="noopener">&#x5C08;&#x7528;&#x8996;&#x5716;&#x5F15;&#x64CE;</a>&#xFF0C;&#x900F;&#x904E;&#x6A19;&#x7C64; <code>@{}</code> &#x4F86;&#x547C;&#x53EB;&#x5BE6;&#x52D9;&#x4E0A;&#x5E38;&#x7528;&#x5230;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5F9E;<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkViews" target="_blank" rel="noopener">&#x9019;&#x908A;</a>&#x770B;&#x898B;&#x6240;&#x6709;&#x53EF;&#x7528;&#x7684;&#x6A19;&#x7C64;&#x3002;&#x5176;&#x4E2D;&#x8F03;&#x7279;&#x5225;&#x5728;<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Localization" target="_blank" rel="noopener">&#x8996;&#x5716;&#x672C;&#x5730;&#x5316;(&#x591A;&#x8A9E;&#x7CFB;)</a>&#x7684;&#x8655;&#x7406;&#xFF0C; total.js &#x63A1;&#x7528;&#x4E00;&#x500B;&#x76F8;&#x7576;&#x8070;&#x660E;&#x7684;&#x4F5C;&#x6CD5;&#x3002;&#x56E0;&#x70BA;&#x6211;&#x7279;&#x5225;&#x559C;&#x611B;&#x9019;&#x500B;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x9019;&#x5C0F;&#x6BB5;&#x6703;&#x7528;&#x6BD4;&#x8F03;&#x9577;&#x4E00;&#x4E9B;&#x4F86;&#x8AAA;&#x660E;&#x3002;</p>
-<p>&#x4F8B;&#x5982;&#xFF1A; <code>/views/index.html</code> &#x5167;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
-<pre><code>&lt;h1&gt;@(&#x54C8;&#x56C9;&#xFF0C;@{model.username} &#x4F60;&#x597D;!)&lt;/h1&gt;
-&lt;p&gt;@(&#x5148;&#x4E0D;&#x8981;&#x7BA1; @{model.thing} &#x4E86;&#xFF0C;&#x4F60;&#x807D;&#x904E; @{model.company} &#x55CE;&#xFF1F;)&lt;p&gt;
+</code></pre><p>這種特別的作法可以很容易加入或移除旗標來異動額外需求，這邊有 total.js 作者已精心整理一些<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Controllers" target="_blank" rel="noopener">控制器與旗標的常用範例清單</a></p>
+<h3 id="視圖引擎與本地化-Views-and-localization"><a href="#視圖引擎與本地化-Views-and-localization" class="headerlink" title="視圖引擎與本地化 (Views and localization)"></a>視圖引擎與本地化 (Views and localization)</h3><p>total.js 使用自己<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~View%20engine" target="_blank" rel="noopener">專用視圖引擎</a>，透過標籤 <code>@{}</code> 來呼叫實務上常用到的功能，可以從<a href="http://docs.totaljs.com/v1.9.x/en.html#api~FrameworkViews" target="_blank" rel="noopener">這邊</a>看見所有可用的標籤。其中較特別在<a href="http://docs.totaljs.com/v1.9.x/en.html#pages~Localization" target="_blank" rel="noopener">視圖本地化(多語系)</a>的處理， total.js 採用一個相當聰明的作法。因為我特別喜愛這個功能，所以這小段會用比較長一些來說明。</p>
+<p>例如： <code>/views/index.html</code> 內容如下：</p>
+<pre><code>&lt;h1&gt;@(哈囉，@{model.username} 你好!)&lt;/h1&gt;
+&lt;p&gt;@(先不要管 @{model.thing} 了，你聽過 @{model.company} 嗎？)&lt;p&gt;
 &lt;p&gt;
-    @(&#x90A3;&#x4E9B;&#x4EBA;&#xFF0C;&#x9760;&#x8457;&#x8CFA;&#x4F60;&#x7684;&#x9322;&#xFF0C;&#x4ED6;&#x5011;&#x51FA;&#x570B;&#x65C5;&#x904A;&#x3001;&#x8CB7;&#x8ECA;&#x8CB7;&#x623F;&#x3001; &#x5403;&#x597D;&#x6599;&#x53C3;&#x52A0;&#x805A;&#x6703;&#xFF0C;&#x7136;&#x5F8C;&#x544A;&#x8A34;&#x4F60;&#xFF1A;&#x4F60;&#x8981;&#x52AA;&#x529B;&#x5805;&#x6301;&#x5922;&#x60F3;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;&#x6211;&#x9019;&#x6A23;&#x6210;&#x5C31;&#x81EA;&#x6211;)
+    @(那些人，靠著賺你的錢，他們出國旅遊、買車買房、 吃好料參加聚會，然後告訴你：你要努力堅持夢想，就可以像我這樣成就自我)
 &lt;p/&gt;
-</code></pre><p>&#x958B;&#x767C;&#x8005;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x6307;&#x4EE4; <code>total --translate</code> &#x8B93; total.js &#x5354;&#x52A9;&#x4F60;&#x627E;&#x51FA;&#x6240;&#x6709;&#x8996;&#x5716;&#x4E2D;&#x88AB; <code>@()</code> &#x5305;&#x542B;&#x7684;&#x5B57;&#x4E32;&#x7247;&#x6BB5;&#xFF0C;&#x4E26;&#x7522;&#x4E00;&#x500B;&#x8A9E;&#x7CFB;&#x5C0D;&#x7167;&#x8868; <code>translate.resource</code>&#xFF1A;</p>
+</code></pre><p>開發者可以透過指令 <code>total --translate</code> 讓 total.js 協助你找出所有視圖中被 <code>@()</code> 包含的字串片段，並產一個語系對照表 <code>translate.resource</code>：</p>
 <pre><code>// Total.js translation file
 // Created: 2016-06-23 17:01
 
 // views\index.html
-T1487589120      : &#x54C8;&#x56C9;&#xFF0C;@{model.username} &#x4F60;&#x597D;!
-T-1643442394     : &#x5148;&#x4E0D;&#x8981;&#x7BA1; @{model.thing} &#x4E86;&#xFF0C;&#x4F60;&#x807D;&#x904E; @{model.company} &#x55CE;&#xFF1F;
-T-1943851619     : &#x90A3;&#x4E9B;&#x4EBA;&#xFF0C;&#x9760;&#x8457;&#x8CFA;&#x4F60;&#x7684;&#x9322;&#xFF0C;&#x4ED6;&#x5011;&#x51FA;&#x570B;&#x65C5;&#x904A;&#x3001;&#x8CB7;&#x8ECA;&#x8CB7;&#x623F;&#x3001;&#x5403;&#x597D;&#x6599;&#x53C3;&#x52A0;&#x805A;&#x6703;&#xFF0C;&#x7136;&#x5F8C;&#x544A;&#x8A34;&#x4F60;&#xFF1A;&#x4F60;&#x8981;&#x52AA;&#x529B;&#x5805;&#x6301;&#x5922;&#x60F3;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;&#x6211;&#x9019;&#x6A23;&#x6210;&#x5C31;&#x81EA;&#x6211;
-</code></pre><p>&#x5167;&#x5BB9;&#x5DE6;&#x908A;&#x7684; key &#x503C;&#x7531; total.js &#x81EA;&#x52D5;&#x7522;&#x751F;&#xFF0C;&#x53F3;&#x908A;&#x5C0D;&#x61C9;&#x8996;&#x5716;&#x4E2D;&#x6240;&#x6709;&#x9700;&#x8981;&#x88AB;&#x7FFB;&#x8B6F;&#x7684;&#x5B57;&#x4E32;&#x3002;&#x7136;&#x5F8C;&#x5C07;&#x6B64;&#x6A94;&#x6848;&#x4F9D;&#x7167;&#x8A9E;&#x7CFB;&#x9700;&#x6C42;&#x53E6;&#x5B58;&#x81F3; <code>resources/en.resource</code> &#x518D;&#x9032;&#x884C;&#x7FFB;&#x8B6F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+T1487589120      : 哈囉，@{model.username} 你好!
+T-1643442394     : 先不要管 @{model.thing} 了，你聽過 @{model.company} 嗎？
+T-1943851619     : 那些人，靠著賺你的錢，他們出國旅遊、買車買房、吃好料參加聚會，然後告訴你：你要努力堅持夢想，就可以像我這樣成就自我
+</code></pre><p>內容左邊的 key 值由 total.js 自動產生，右邊對應視圖中所有需要被翻譯的字串。然後將此檔案依照語系需求另存至 <code>resources/en.resource</code> 再進行翻譯，例如：</p>
 <pre><code>// Total.js translation file
 // Created: 2016-06-23 17:01
 
@@ -191,19 +191,19 @@ T-1943851619     : &#x90A3;&#x4E9B;&#x4EBA;&#xFF0C;&#x9760;&#x8457;&#x8CFA;&#x4F
 T1487589120      : Hello, @{model.username} greeting !
 T-1643442394     : Don&apos;s care about @{model.thing}, do you know @{model.company} ?
 T-1943851619     : Such people who rely on you to earn money, they travel abroad, buy a car, eat feed to the party, and then tell you: you should strive to adhere to the dream, like me, you can self-achievemen
-</code></pre><p>&#x63A5;&#x8457;&#x53C3;&#x8003;&#x4E00;&#x4E0B;<a href="https://github.com/totaljs/examples/tree/master/localization-resources" target="_blank" rel="noopener">&#x672C;&#x5730;&#x5316;&#x7BC4;&#x4F8B;</a>&#x7684;&#x4F5C;&#x6CD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x7DB2;&#x5740; <code>?language=en</code> &#x5207;&#x63DB;&#x6210;&#x8A9E;&#x7CFB;&#x3002;&#x9019;&#x7A2E;&#x65B9;&#x5F0F;&#x597D;&#x8655;&#x53EF;&#x4EE5;&#x8B93;&#x4F60;&#x5728;&#x8996;&#x5716;&#x4E2D;&#x4F7F;&#x7528;&#x4F60;&#x7FD2;&#x6163;&#x7684;&#x8A9E;&#x7CFB;&#x53BB;&#x7DE8;&#x5BEB;&#xFF0C;&#x800C;&#x4E14;&#x5168;&#x6587;&#x90E8;&#x5206;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x4ED6;&#x7576;&#x6210;&#x662F;&#x7FFB;&#x8B6F;&#x5167;&#x5BB9;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
-<h3 id="NoSQL-&#x8207;-SchemaBuilder"><a href="#NoSQL-&#x8207;-SchemaBuilder" class="headerlink" title="NoSQL &#x8207; SchemaBuilder"></a>NoSQL &#x8207; SchemaBuilder</h3><p>total.js &#x9810;&#x8A2D;&#x4F7F;&#x7528;&#x81EA;&#x88FD;&#x7684; NoSQL &#x8CC7;&#x6599;&#x5EAB;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x500B;&#x4EE5;&#x7D14;&#x6587;&#x5B57;&#x65B9;&#x5F0F;&#x5132;&#x5B58; JSON &#x683C;&#x5F0F;&#x7684;&#x6A94;&#x6848;&#x578B;&#x8CC7;&#x6599;&#x5EAB;&#xFF0C;&#x5C0D;&#x65BC;&#x5FEB;&#x901F;&#x5EFA;&#x7ACB;&#x7C21;&#x6613;&#x7DB2;&#x7AD9;&#x6216;&#x958B;&#x767C;&#x521D;&#x578B;&#x529F;&#x80FD;&#x7DB2;&#x7AD9;&#x4F86;&#x8B1B;&#x76F8;&#x7576;&#x65B9;&#x4FBF;&#xFF0C;&#x53EF;&#x4EE5;&#x8B93;&#x6574;&#x500B;&#x5C08;&#x6848;&#x5E36;&#x8457;&#x8D70;&#x3002;&#x800C; SchemaBuilder &#x662F;&#x5354;&#x52A9;&#x4F60;&#x958B;&#x767C;&#x6642;&#x5EFA;&#x7ACB;&#x8CC7;&#x6599;&#x6A21;&#x578B;&#x7684;&#x597D;&#x5E6B;&#x624B;&#xFF0C;&#x4F60;&#x53EF;&#x5728;&#x9019;&#x908A;&#x5B9A;&#x7FA9;&#x597D;&#x8CC7;&#x6599;&#x6B04;&#x4F4D;&#x3001;&#x9A57;&#x8B49;&#x898F;&#x5247;&#x3001;&#x904E;&#x6FFE;&#x898F;&#x5247;&#x3001;&#x7279;&#x73E0;&#x67E5;&#x8A62;&#x7B49;&#xFF0C;&#x67D0;&#x65B9;&#x9762;&#x4F86;&#x5B83;&#x6709;&#x9EDE;&#x50CF;&#x662F; ORM &#x7684;&#x5473;&#x9053;&#x3002;</p>
-<h3 id="&#x6975;&#x4F73;&#x5F48;&#x6027;&#x5316;&#x6A5F;&#x5236;"><a href="#&#x6975;&#x4F73;&#x5F48;&#x6027;&#x5316;&#x6A5F;&#x5236;" class="headerlink" title="&#x6975;&#x4F73;&#x5F48;&#x6027;&#x5316;&#x6A5F;&#x5236;"></a>&#x6975;&#x4F73;&#x5F48;&#x6027;&#x5316;&#x6A5F;&#x5236;</h3><p>total.js &#x6240;&#x6709;&#x7684;&#x6A21;&#x7D44;&#x90FD;&#x4E0D;&#x662F;&#x5F37;&#x5236;&#x6027;&#x7684;&#x3002;&#x4F8B;&#x5982;&#x4F60;&#x53EF;&#x4EE5;<a href="https://github.com/totaljs/modules/tree/master/View%20Engines/swig" target="_blank" rel="noopener">&#x5C07;&#x8996;&#x5716;&#x5F15;&#x64CE;&#x63DB;&#x6210; swig</a>&#xFF0C;&#x6216;&#x662F;<a href="https://github.com/totaljs/examples/tree/master/mongodb" target="_blank" rel="noopener">&#x5C07;&#x8CC7;&#x6599;&#x5EAB;&#x63DB; mongodb &#x4F86;&#x4F7F;&#x7528;</a>&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x4F7F;&#x7528; Socket.io&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x9019;&#x6A23;&#x7684;&#x65B9;&#x5F0F;&#x4F86;&#x5EFA;&#x7ACB;</p>
+</code></pre><p>接著參考一下<a href="https://github.com/totaljs/examples/tree/master/localization-resources" target="_blank" rel="noopener">本地化範例</a>的作法，就可以透過網址 <code>?language=en</code> 切換成語系。這種方式好處可以讓你在視圖中使用你習慣的語系去編寫，而且全文部分，也可以把他當成是翻譯內容的一部分。</p>
+<h3 id="NoSQL-與-SchemaBuilder"><a href="#NoSQL-與-SchemaBuilder" class="headerlink" title="NoSQL 與 SchemaBuilder"></a>NoSQL 與 SchemaBuilder</h3><p>total.js 預設使用自製的 NoSQL 資料庫，它是一個以純文字方式儲存 JSON 格式的檔案型資料庫，對於快速建立簡易網站或開發初型功能網站來講相當方便，可以讓整個專案帶著走。而 SchemaBuilder 是協助你開發時建立資料模型的好幫手，你可在這邊定義好資料欄位、驗證規則、過濾規則、特珠查詢等，某方面來它有點像是 ORM 的味道。</p>
+<h3 id="極佳彈性化機制"><a href="#極佳彈性化機制" class="headerlink" title="極佳彈性化機制"></a>極佳彈性化機制</h3><p>total.js 所有的模組都不是強制性的。例如你可以<a href="https://github.com/totaljs/modules/tree/master/View%20Engines/swig" target="_blank" rel="noopener">將視圖引擎換成 swig</a>，或是<a href="https://github.com/totaljs/examples/tree/master/mongodb" target="_blank" rel="noopener">將資料庫換 mongodb 來使用</a>，如果想使用 Socket.io，也可以透過這樣的方式來建立</p>
 <pre><code>var io = require(&apos;socket.io&apos;)(F.server);
-</code></pre><p>&#x7136;&#x5F8C;&#x6539;&#x7528; Socket.io &#x65B9;&#x5F0F;&#x9032;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
-<p>&#x5728; <code>Controllers</code>, <code>Definitions</code>, <code>Modules</code>, <code>Packages</code>, <code>Models</code> &#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x900F;&#x904E; URL &#x4F4D;&#x7F6E;&#x4F86;&#x9032;&#x884C;&#x8F09;&#x5165;&#x3002;&#x9019;&#x610F;&#x5473;&#x53EF;&#x4EE5;&#x5C07;&#x4E00;&#x4E9B;&#x5171;&#x7528;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F7F;&#x7528;&#x7D71;&#x4E00;&#x7684;&#x4F4D;&#x7F6E;&#x7D66;&#x4E0D;&#x540C;&#x5C08;&#x6848;&#x4F86;&#x4F7F;&#x7528;&#x3002;&#x53E6;&#x5916;&#x4F5C;&#x8005;&#x4E5F;&#x9810;&#x5148;&#x5BEB;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x984D;&#x5916;&#x6A21;&#x7D44;&#xFF0C;&#x50CF;&#x662F;&#x900F;&#x904E;&#x7B2C;&#x4E09;&#x65B9;&#x767B;&#x5165;&#x7684; <a href="https://github.com/totaljs/modules/tree/master/Security/oauth2" target="_blank" rel="noopener">oauth2 &#x7684;&#x6A21;&#x7D44;</a>&#x3002;</p>
-<h3 id="&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x6A5F;&#x5236;"><a href="#&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x6A5F;&#x5236;" class="headerlink" title="&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x6A5F;&#x5236;"></a>&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x6A5F;&#x5236;</h3><p>total.js &#x8A2D;&#x8A08;&#x4E86;&#x4E00;&#x500B;&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x7684;&#x6A5F;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x900F;&#x904E;&#x7A0B;&#x5F0F;&#x53BB;&#x5207;&#x63DB;&#x4E0D;&#x540C;&#x7684;&#x4F48;&#x666F;&#x4E3B;&#x984C;&#x3002;&#x9019;&#x6A23;&#x7684;&#x597D;&#x8655;&#x53EF;&#x4EE5;&#x5C07;&#x5E38;&#x7528;&#x7684;&#x529F;&#x80FD;&#x958B;&#x767C;&#x6210;&#x6A21;&#x7D44;&#xFF0C;&#x7DB2;&#x9801;&#x8A2D;&#x8A08;&#x5E2B;&#x53EA;&#x8981;&#x6CE8;&#x5C08;&#x5728;&#x8996;&#x5716;&#x4E0A;&#xFF0C;&#x8A2D;&#x8A08;&#x4E0D;&#x540C;&#x4F48;&#x666F;&#x4E3B;&#x984C;&#xFF0C;&#x4E0D;&#x6015;&#x5F71;&#x97FF;&#x6574;&#x500B;&#x7DB2;&#x7AD9;&#x7684;&#x529F;&#x80FD;&#x6D41;&#x7A0B;&#x3002;</p>
-<h3 id="&#x7D50;&#x8AD6;"><a href="#&#x7D50;&#x8AD6;" class="headerlink" title="&#x7D50;&#x8AD6;"></a>&#x7D50;&#x8AD6;</h3><p>total.js &#x6846;&#x67B6;&#x5C0D;&#x65B0;&#x4EBA;&#x76F8;&#x7576;&#x53CB;&#x5584;&#x800C;&#x4E14;&#x5BB9;&#x6613;&#x5B78;&#x7FD2;&#x7684;&#xFF0C;&#x5B83;&#x8F15;&#x4FBF;&#x8207;&#x6613;&#x7528;&#x6027;&#x975E;&#x9069;&#x5408;&#x4F86;&#x505A;&#x5FEB;&#x901F;&#x958B;&#x767C;&#x5C08;&#x6848;&#x539F;&#x578B;&#x3002;&#x5C0D; SOHO &#x65CF;&#x4F86;&#x8B1B;&#xFF0C;&#x7528;&#x5B83;&#x63A5;&#x6848;&#x958B;&#x767C;&#x4E2D;&#x5C0F;&#x7DB2;&#x7AD9;&#x4E5F;&#x662F;&#x4E00;&#x500B;&#x76F8;&#x7576;&#x4E0D;&#x932F;&#x7684;&#x9078;&#x9805;&#x3002;&#x8207;&#x5176;&#x5728;&#x773E;&#x591A;&#x7684;&#x6846;&#x67B6;&#x7336;&#x8C6B;&#x4E0D;&#x5B9A;&#xFF0C;&#x4E0D;&#x5982;&#x5148;&#x7528; total.js &#x5FEB;&#x901F;&#x958B;&#x767C;&#x539F;&#x578B;&#x7DB2;&#x7AD9;&#xFF0C;&#x4F86;&#x9A57;&#x8B49;&#x4F60;&#x7684;&#x4E3B;&#x610F;&#x53EF;&#x4E0D;&#x53EF;&#x884C;&#xFF0C;&#x518D;&#x4F86;&#x8003;&#x616E;&#x7CFB;&#x7D71;&#x91CD;&#x69CB;&#x554F;&#x984C;&#x3002;</p>
-<h3 id="&#x5F8C;&#x8A18;"><a href="#&#x5F8C;&#x8A18;" class="headerlink" title="&#x5F8C;&#x8A18;"></a>&#x5F8C;&#x8A18;</h3><p>&#x539F;&#x672C;&#x60F3;&#x8981;&#x5217;&#x51FA;&#x4E00;&#x4E9B; total.js &#x7F3A;&#x9EDE;&#x6216;&#x5F31;&#x52E2;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F46;&#x60F3;&#x5230;&#x6211;&#x597D;&#x53CB;&#x8AAA;&#x7684;</p>
+</code></pre><p>然後改用 Socket.io 方式進行的操作。</p>
+<p>在 <code>Controllers</code>, <code>Definitions</code>, <code>Modules</code>, <code>Packages</code>, <code>Models</code> 甚至可以透過 URL 位置來進行載入。這意味可以將一些共用的部分，使用統一的位置給不同專案來使用。另外作者也預先寫了一些常被使用的額外模組，像是透過第三方登入的 <a href="https://github.com/totaljs/modules/tree/master/Security/oauth2" target="_blank" rel="noopener">oauth2 的模組</a>。</p>
+<h3 id="佈景主題機制"><a href="#佈景主題機制" class="headerlink" title="佈景主題機制"></a>佈景主題機制</h3><p>total.js 設計了一個佈景主題的機制，可以透過程式去切換不同的佈景主題。這樣的好處可以將常用的功能開發成模組，網頁設計師只要注專在視圖上，設計不同佈景主題，不怕影響整個網站的功能流程。</p>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>total.js 框架對新人相當友善而且容易學習的，它輕便與易用性非適合來做快速開發專案原型。對 SOHO 族來講，用它接案開發中小網站也是一個相當不錯的選項。與其在眾多的框架猶豫不定，不如先用 total.js 快速開發原型網站，來驗證你的主意可不可行，再來考慮系統重構問題。</p>
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>原本想要列出一些 total.js 缺點或弱勢的部分，但想到我好友說的</p>
 <blockquote>
-<p>&#x7F3A;&#x9EDE;&#x4E0D;&#x662F;&#x5728;&#x6240;&#x6709;&#x60C5;&#x6CC1;&#x662F;&#x7F3A;&#x9EDE;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x67D0;&#x7A2E;&#x7279;&#x5B9A;&#x60C5;&#x6CC1;&#x624D;&#x662F;<br>&#x2013; <cite>Vincent Chang</cite></p>
+<p>缺點不是在所有情況是缺點，只有在某種特定情況才是<br>– <cite>Vincent Chang</cite></p>
 </blockquote>
-<p>&#x52A0;&#x4E0A;&#x9047;&#x5230;&#x9700;&#x6C42;&#x6848;&#x4F8B;&#x9084;&#x4E0D;&#x8DB3;&#x505A;&#x6BD4;&#x8F03;&#xFF0C;&#x9019;&#x908A;&#x5C31;&#x66AB;&#x6642;&#x4E0D;&#x63D0;&#x4E86;(&#x8B0E;&#x4E4B;&#x8072;&#xFF1A;&#x9019;&#x4E0D;&#x53EB;&#x8B77;&#x822A;&#xFF0C;&#x4EC0;&#x9EBC;&#x53EB;&#x8B77;&#x822A;)&#x3002;&#x4E0D;&#x904E;&#x5982;&#x679C;&#x786C;&#x8981;&#x6311;&#x4E00;&#x9EDE;&#x4F86;&#x8B1B;&#x7684;&#x8A71;&#xFF0C;&#x90A3;&#x5C31;&#x662F; total.js &#x7684;&#x4F5C;&#x8005;&#x5728;&#x8F03;&#x65B0;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x70BA;&#x4E00;&#x4E9B;&#x51FD;&#x5F0F;&#x8FFD;&#x52A0;&#x66F4;&#x8CBC;&#x8FD1;&#x610F;&#x601D;&#x7684;&#x5225;&#x540D;&#xFF0C;&#x4F46;&#x6587;&#x4EF6;&#x4E0A;&#x9019;&#x4E9B;&#x820A;&#x51FD;&#x5F0F;&#x8207;&#x5225;&#x540D;&#x540C;&#x6642;&#x4E26;&#x5217;&#xFF0C;&#x53CD;&#x800C;&#x9020;&#x6210;&#x4E86;&#x6DF7;&#x4E82;&#xFF0C;&#x61C9;&#x8A72;&#x76F4;&#x63A5;&#x5EFA;&#x8B70;&#x958B;&#x767C;&#x8005;&#x4F7F;&#x7528;&#x65B0;&#x5225;&#x540D;&#x5C31;&#x597D;&#xFF0C;&#x820A;&#x540D;&#x7A31;&#x76F4;&#x63A5;&#x6DE1;&#x5316;&#x8868;&#x793A;</p>
+<p>加上遇到需求案例還不足做比較，這邊就暫時不提了(謎之聲：這不叫護航，什麼叫護航)。不過如果硬要挑一點來講的話，那就是 total.js 的作者在較新版本中，為一些函式追加更貼近意思的別名，但文件上這些舊函式與別名同時並列，反而造成了混亂，應該直接建議開發者使用新別名就好，舊名稱直接淡化表示</p>
 
       
 
@@ -274,7 +274,7 @@ T-1943851619     : Such people who rely on you to earn money, they travel abroad
 
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Liao San Kai &nbsp;
+      &copy; 2019 Liao San Kai &nbsp;
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>,
       theme by <a href="http://github.com/ppoffice">PPOffice</a>
     </div>
@@ -313,10 +313,53 @@ T-1943851619     : Such people who rely on you to earn money, they travel abroad
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+
+<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+<script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+</script>
+
+
 <script src="/js/script.js"></script>
 
     </div>
 
+    <div id="go-top" style="padding:1em;border:1px solid #CCC;position:fixed;bottom:100px;right:50px;cursor: pointer;">
+    <a title="Go Top">
+        Go Top
+    </a>
+</div>
+
+<script>
+(function($) {
+	// When to show the scroll link
+	// higher number = scroll link appears further down the page
+	let upperLimit = 150;
+
+	// Our scroll link element
+	let scrollElem = $('#go-top');
+
+	// Scroll to top speed
+	let scrollSpeed = 500;
+
+	// Show and hide the scroll to top link based on scroll position
+	scrollElem.hide();
+	$(window).scroll(function () {
+		let scrollTop = $(document).scrollTop();
+		if ( scrollTop > upperLimit ) {
+			$(scrollElem).stop().fadeTo(300, 1); // fade back in
+		}else{
+			$(scrollElem).stop().fadeTo(300, 0); // fade out
+		}
+	});
+	// Scroll to top animation on click
+	$(scrollElem).click(function(){
+		$('html, body').animate({scrollTop:0}, scrollSpeed); return false;
+	});
+})(jQuery);
+</script>
   </body>
 
 </html>
